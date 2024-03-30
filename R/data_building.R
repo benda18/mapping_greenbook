@@ -20,3 +20,6 @@ gb$oneline <- paste(gb$Address,
                     gb$City, 
                     gb$State, sep = ", ")
 
+temp.addr <- censusxy::cxy_oneline("7318 Overland Park Court, West Chester, OH")
+
+temp.addr
