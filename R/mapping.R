@@ -49,9 +49,9 @@ tigris.states <- tigris.states[tigris.states$NAME %in% gb$state,]
 
 # map
 ggplot() + 
-  geom_sf(data = tigris.cities, 
-          aes(size = count)) +
   geom_sf(data = tigris.states, color = "grey", fill = NA)+
+  geom_sf(data = tigris.cities, alpha = 0.5,
+          aes(size = count)) +
   #scale_color_viridis_c(option = "C") +
   scale_size_area()+
   theme_dark() + 
@@ -60,5 +60,4 @@ ggplot() +
   labs(title = "Greenbook Locations by City")
 
 
-grep("albany", tigris.cities$NAME, 
-     ignore.case = T, value = T)
+
