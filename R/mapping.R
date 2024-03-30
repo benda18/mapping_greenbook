@@ -48,9 +48,9 @@ tigris.states <- tigris.states[tigris.states$NAME %in% gb$state,]
 
 # map
 ggplot() + 
-  geom_sf(data = tigris.states, color = "grey", fill = NA)+
   geom_sf(data = tigris.cities, 
           aes(size = count)) +
+  geom_sf(data = tigris.states, color = "grey", fill = NA)+
   #scale_color_viridis_c(option = "C") +
   scale_size_area()+
   theme_dark() + 
