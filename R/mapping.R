@@ -33,30 +33,31 @@ for(i.st in unique(gb$state)){
   rm(temp)
 }
 
-tigris.cities
+tigris.cities <- sf::st_centroid(tigris.cities)
 
-# sf_cities.al <- tigris::county_subdivisions(state = unique(gb$state), cb = T)
-# sf_cities.al$green <- F
-# sf_cities.al[sf_cities.al$NAME %in% gb$City & 
-#                             sf_cities.al$STATE_NAME == "Alabama",]$green <- T
-# 
-# # counties
-# sf_counties.al <- tigris::counties(state = "AL", cb = T)
-# 
-# # get states
-# 
-# sf_states <- tigris::states(cb = T) 
-# sf_states <- sf_states[sf_states$NAME %in% gb$State,]
-# 
-# ggplot() + 
-#   geom_sf(data = sf_states) +
-#   geom_sf(data = sf_cities.al, aes(fill = green), 
-#           color = "white")+
-#   geom_sf(data = sf_counties.al, 
-#           fill = NA, color = "black")+
-#   # geom_point(data = gb, 
-#   #            aes(x = cen_lon, y = cen_lat)) +
-#   # geom_text_repel(data = gb_citylabs, 
-#   #                 aes(x = lon, y = lat, 
-#   #                     label = City)) +
-#   theme_void()
+tigris.cities <- left_join(tigris.cities, 
+                           gb, by = c("STATE_NAME" = "state", 
+                                      "NAME" = "city"))
+
+
+# get states----
+
+tigris.states <- states(T)
+tigris.states <- tigris.states[tigris.states$NAME %in% gb$state,]
+
+
+# map
+ggplot() + 
+  geom_sf(data = tigris.states, color = "grey", fill = NA)+
+  geom_sf(data = tigris.cities, 
+          aes(size = count)) +
+  #scale_color_viridis_c(option = "C") +
+  scale_size_area()+
+  theme_dark() + 
+  theme(axis.text = element_blank(), 
+        axis.ticks = element_blank())+
+  labs(title = "Greenbook Locations by City")
+
+
+grep("augustine", tigris.cities$NAME, 
+     ignore.case = T, value = T)
