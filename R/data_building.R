@@ -2,7 +2,7 @@ library(renv)
 library(readxl)
 library(xlsx)
 #library(remotes)
-library(censusxy)
+#library(censusxy)
 #remotes::install_github("chris-prener/censusxy")
 library(janitor)
 
