@@ -15,7 +15,7 @@ gc()
 
 # read spreadsheet----
 
-gb <- read_xlsx(path = "data/greenbook_addresses.xlsx")
+gb <- readxl::read_xlsx(path = "data/greenbook_addresses.xlsx")
 
 gb$oneline <- paste(gb$Address, 
                     gb$City, 
