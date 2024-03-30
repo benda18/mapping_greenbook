@@ -59,5 +59,5 @@ ggplot() +
   labs(title = "Greenbook Locations by City")
 
 
-grep("augustine", tigris.cities$NAME, 
+grep("albany", tigris.cities$NAME, 
      ignore.case = T, value = T)
