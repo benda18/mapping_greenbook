@@ -23,6 +23,7 @@ gb$oneline <- paste(gb$Address,
 
 for(i in 1:nrow(gb)){
   if(is.na(gb$cen_addr[i])){
+    print(i)
     temp <- censusxy::cxy_oneline(gb[i,]$oneline)
     if(is.null(temp)){
       gb$cen_addr[i] <- "[none found]"
@@ -40,4 +41,8 @@ for(i in 1:nrow(gb)){
   rm(temp)
 }
 
+# remove leading rows and write to file
+xlsx::write.xlsx(x = gb[,!grepl("^\\.", colnames(gb))], 
+                 file = "data/greenbook_addresses.xlsx")
+rm(gb)
 
