@@ -29,6 +29,8 @@ sf_cities.al$green <- F
 sf_cities.al[sf_cities.al$NAME %in% gb$City & 
                             sf_cities.al$STATE_NAME == "Alabama",]$green <- T
 
+# counties
+sf_counties.al <- tigris::counties(state = "AL", cb = T)
 
 # get states
 
@@ -37,9 +39,12 @@ sf_states <- sf_states[sf_states$NAME %in% gb$State,]
 
 ggplot() + 
   geom_sf(data = sf_states) +
-  geom_sf(data = sf_cities.al, aes(fill = green))+
-  geom_point(data = gb, 
-             aes(x = cen_lon, y = cen_lat)) +
+  geom_sf(data = sf_cities.al, aes(fill = green), 
+          color = "white")+
+  geom_sf(data = sf_counties.al, 
+          fill = NA, color = "black")+
+  # geom_point(data = gb, 
+  #            aes(x = cen_lon, y = cen_lat)) +
   # geom_text_repel(data = gb_citylabs, 
   #                 aes(x = lon, y = lat, 
   #                     label = City)) +
