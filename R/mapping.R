@@ -5,6 +5,7 @@ library(xlsx)
 library(readxl)
 library(janitor)
 library(ggrepel)
+library(dplyr)
 
 
 renv::status()
@@ -14,6 +15,13 @@ rm(list=ls());cat('\f')
 gc()
 
 gb <- read_xlsx("data/greenbook_addresses.xlsx")
+
+# city labels
+gb_citylabs <- gb |>
+  group_by(State, City) |> 
+  summarise(lon = mean(cen_lon, na.rm = T), 
+            lat = mean(cen_lat, na.rm = T), 
+            n = n())
 
 # get states
 
