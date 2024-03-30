@@ -34,4 +34,5 @@ ggplot() +
              aes(x = cen_lon, y = cen_lat)) +
   geom_text_repel(data = gb_citylabs, 
                   aes(x = lon, y = lat, 
-                      label = City))
+                      label = City)) +
+  theme_void()
