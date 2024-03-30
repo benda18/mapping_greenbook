@@ -22,7 +22,8 @@ tigris.cities <- NULL
 
 for(i.st in unique(gb$state)){
   print(i.st)
-  temp <- county_subdivisions(i.st, cb = T)
+  #temp <- county_subdivisions(i.st, cb = T)
+  temp <- places(i.st, cb = T)
   
   for(i.ci in unique(gb$city[gb$state == i.st])){
     tigris.cities <- rbind(tigris.cities, 
