@@ -23,12 +23,15 @@ gb$beauty[is.na(gb$beauty)] <- 0
 gb$entertainment[is.na(gb$entertainment)] <- 0
 gb$automotive[is.na(gb$automotive)] <- 0
 
-gb$total[is.na(gb$total)] <- gb$lodging[is.na(gb$total)] + 
+gb$total[is.na(gb$total) | gb$total == 0] <- 
+  gb$lodging[is.na(gb$total)] + 
   gb$dining[is.na(gb$total)] + 
   gb$beauty[is.na(gb$total)] + 
   gb$beauty[is.na(gb$total)] + 
   gb$entertainment[is.na(gb$total)] + 
   gb$automotive[is.na(gb$total)]
+
+gb
 
 # get cities
 
