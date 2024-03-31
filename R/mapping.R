@@ -72,7 +72,7 @@ ggplot() +
   geom_sf(data = tigris.cities, alpha = 0.5,
           aes(size = total)) +
   #scale_color_viridis_c(option = "C") +
-  scale_size_area()+
+  #scale_size_area()+
   theme_dark() + 
   theme(axis.text = element_blank(), 
         axis.ticks = element_blank())+
