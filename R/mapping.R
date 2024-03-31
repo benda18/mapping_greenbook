@@ -70,7 +70,7 @@ tigris.states <- tigris.states[tigris.states$NAME %in% gb$state,]
 ggplot() + 
   geom_sf(data = tigris.states, color = "grey", fill = NA)+
   geom_sf(data = tigris.cities, alpha = 0.5,
-          aes(size = count)) +
+          aes(size = total)) +
   #scale_color_viridis_c(option = "C") +
   scale_size_area()+
   theme_dark() + 
