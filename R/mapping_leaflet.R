@@ -78,8 +78,10 @@ tigris.cities <- left_join(tigris.cities,
                                       "NAME" = "city"))
 
 
-tigris.cities$geometry[1] %>% as.character()
-View(tigris.cities)
+tigris.cities <- cbind(tigris.cities,
+                       as_tibble(as.data.frame(sf::st_coordinates(tigris.cities)))) %>%
+  sf::st_drop_geometry()
+
 
 
 # get states----
@@ -96,7 +98,7 @@ basemap <- leaflet() %>%
     # give the layer a name
     group = "OpenStreetMap"
   ) %>%
-   addProviderTiles(
+  addProviderTiles(
     "Esri.WorldStreetMap",
     group = "Esri.WorldStreetMap"
   ) %>%
@@ -119,13 +121,20 @@ basemap <- leaflet() %>%
     # position it on the topleft
     position = "topleft"
   ) %>%
-  addCircles(lng=gba$cen_lon, 
-             lat=gba$cen_lat, 
-             radius = 50, 
-             opacity = 1,
-             fillOpacity = 0.2, 
-             color  = "black", 
-             fill = "white")
-
-basemap
+  addCircleMarkers(lng=tigris.cities$X,
+                   lat=tigris.cities$Y, 
+                   clusterOptions = 
+                     markerClusterOptions(
+                       showCoverageOnHover = TRUE,
+                       zoomToBoundsOnClick = T,
+                       spiderfyOnMaxZoom = T,
+                       removeOutsideVisibleBounds = F,
+                       spiderLegPolylineOptions = list(weight = 1.5,
+                                                       color = "black", 
+                                                       opacity = 0.5),
+                       freezeAtZoom = FALSE), 
+                   radius = tigris.cities$total*1.5,
+                   fillOpacity = 0.2,
+                   color  = "black",
+                   fill = "white");basemap
 
