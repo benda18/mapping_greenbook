@@ -1,13 +1,27 @@
 library(renv)
-library(ggplot2)
-library(tigris)
+#library(ggplot2)
+#library(tigris)
 library(xlsx)
 library(readxl)
 library(janitor)
-library(ggrepel)
-library(dplyr)
-library(leaflet)
+#library(ggrepel)
+#library(dplyr)
+#library(leaflet)
 
+# for loading our data
+library(readr)
+library(sf)
+# for plotting
+library(leaflet)
+library(leaflet.extras)
+# for more stuff
+library(dbscan)
+library(dplyr)
+#library(openrouteservice)
+library(geosphere)
+library(magrittr)
+
+# https://bookdown.org/nicohahn/making_maps_with_r5/docs/leaflet.html
 
 renv::status()
 #renv::snapshot()
