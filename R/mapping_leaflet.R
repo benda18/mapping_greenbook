@@ -1,12 +1,13 @@
 library(renv)
 #library(ggplot2)
-#library(tigris)
+library(tigris)
 library(xlsx)
 library(readxl)
 library(janitor)
 #library(ggrepel)
 #library(dplyr)
 #library(leaflet)
+library(censusxy)
 
 # for loading our data
 library(readr)
@@ -31,7 +32,7 @@ gc()
 
 getwd()
 gb <- read_xlsx("data/greenbook_citysummary.xlsx")
-
+gba <- read_xlsx("data/greenbook_addresses.xlsx")
 
 # tidy
 gb$lodging[is.na(gb$lodging)] <- 0
@@ -77,6 +78,10 @@ tigris.cities <- left_join(tigris.cities,
                                       "NAME" = "city"))
 
 
+tigris.cities$geometry[1] %>% as.character()
+View(tigris.cities)
+
+
 # get states----
 
 tigris.states <- states(T)
@@ -114,7 +119,13 @@ basemap <- leaflet() %>%
     # position it on the topleft
     position = "topleft"
   ) %>%
-  addMarkers(lng=77.1025, lat=28.7041, 
-             popup="Delhi, India")
+  addCircles(lng=gba$cen_lon, 
+             lat=gba$cen_lat, 
+             radius = 50, 
+             opacity = 1,
+             fillOpacity = 0.2, 
+             color  = "black", 
+             fill = "white")
 
 basemap
+

@@ -183,6 +183,26 @@
       ],
       "Hash": "f61dbaec772ccd2e17705c1e872e9e7c"
     },
+    "censusxy": {
+      "Package": "censusxy",
+      "Version": "1.1.2",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "censusxy",
+      "RemoteUsername": "chris-prener",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "7424a40c65c3733178e2bf60514aeedc3ba9c4a6",
+      "Requirements": [
+        "R",
+        "doParallel",
+        "foreach",
+        "httr",
+        "parallel",
+        "utils"
+      ],
+      "Hash": "40a6e3d5309349b890ba1514b7eb0318"
+    },
     "class": {
       "Package": "class",
       "Version": "7.3-22",
@@ -232,6 +252,16 @@
         "utils"
       ],
       "Hash": "3f038e5ac7f41d4ac41ce658c85e3042"
+    },
+    "codetools": {
+      "Package": "codetools",
+      "Version": "0.2-19",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "c089a619a7fae175d149d89164f8c7d8"
     },
     "colorspace": {
       "Package": "colorspace",
@@ -314,6 +344,20 @@
         "utils"
       ],
       "Hash": "698ece7ba5a4fa4559e3d537e7ec3d31"
+    },
+    "doParallel": {
+      "Package": "doParallel",
+      "Version": "1.0.17",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "foreach",
+        "iterators",
+        "parallel",
+        "utils"
+      ],
+      "Hash": "451e5edf411987991ab6a5410c45011f"
     },
     "dplyr": {
       "Package": "dplyr",
@@ -402,6 +446,19 @@
         "rlang"
       ],
       "Hash": "c2efdd5f0bcd1ea861c2d4e2a883a67d"
+    },
+    "foreach": {
+      "Package": "foreach",
+      "Version": "1.5.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "codetools",
+        "iterators",
+        "utils"
+      ],
+      "Hash": "618609b42c9406731ead03adf5379850"
     },
     "fs": {
       "Package": "fs",
@@ -585,6 +642,17 @@
         "utils"
       ],
       "Hash": "0080607b4a1a7b28979aecef976d8bc2"
+    },
+    "iterators": {
+      "Package": "iterators",
+      "Version": "1.0.14",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "utils"
+      ],
+      "Hash": "8954069286b4b2b0d023d1b288dce978"
     },
     "janitor": {
       "Package": "janitor",
