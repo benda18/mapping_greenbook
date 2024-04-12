@@ -51,5 +51,35 @@ gb$total[is.na(gb$total) | gb$total == 0] <-
 
 gb
 
+basemap <- leaflet() %>%
+  # add different provider tiles
+  addProviderTiles(
+    "OpenStreetMap",
+    # give the layer a name
+    group = "OpenStreetMap"
+  ) %>%
+   addProviderTiles(
+    "Esri.WorldStreetMap",
+    group = "Esri.WorldStreetMap"
+  ) %>%
+  addProviderTiles(
+    "CartoDB.Positron",
+    group = "CartoDB.Positron"
+  ) %>%
+  addProviderTiles(
+    "Esri.WorldImagery",
+    group = "Esri.WorldImagery"
+  ) %>%
+  # add a layers control
+  addLayersControl(
+    baseGroups = c(
+      "OpenStreetMap",
+      "Esri.WorldStreetMap",
+      "Esri.WorldImagery",
+      "CartoDB.Positron"
+    ),
+    # position it on the topleft
+    position = "topleft"
+  )
 
-
+basemap
