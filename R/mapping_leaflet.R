@@ -32,6 +32,7 @@ gc()
 getwd()
 gb <- read_xlsx("data/greenbook_citysummary.xlsx")
 
+
 # tidy
 gb$lodging[is.na(gb$lodging)] <- 0
 gb$dining[is.na(gb$dining)] <- 0
@@ -50,6 +51,38 @@ gb$total[is.na(gb$total) | gb$total == 0] <-
   gb$tailor[is.na(gb$total)]
 
 gb
+
+# get cities
+
+tigris.cities <- NULL
+
+for(i.st in unique(gb$state)){
+  print(i.st)
+  #temp <- county_subdivisions(i.st, cb = T)
+  temp <- places(i.st, cb = T)
+  
+  for(i.ci in unique(gb$city[gb$state == i.st])){
+    tigris.cities <- rbind(tigris.cities, 
+                           temp[temp$STATE_NAME == i.st & 
+                                  temp$NAME == i.ci,])
+  }
+  
+  rm(temp)
+}
+
+tigris.cities <- sf::st_centroid(tigris.cities)
+
+tigris.cities <- left_join(tigris.cities, 
+                           gb, by = c("STATE_NAME" = "state", 
+                                      "NAME" = "city"))
+
+
+# get states----
+
+tigris.states <- states(T)
+tigris.states <- tigris.states[tigris.states$NAME %in% gb$state,]
+
+# leaflet----
 
 basemap <- leaflet() %>%
   # add different provider tiles
@@ -80,6 +113,8 @@ basemap <- leaflet() %>%
     ),
     # position it on the topleft
     position = "topleft"
-  )
+  ) %>%
+  addMarkers(lng=77.1025, lat=28.7041, 
+             popup="Delhi, India")
 
 basemap
