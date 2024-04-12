@@ -6,6 +6,7 @@ library(readxl)
 library(janitor)
 library(ggrepel)
 library(dplyr)
+library(leaflet)
 
 
 renv::status()
@@ -77,6 +78,7 @@ ggplot() +
   theme(axis.text = element_blank(), 
         axis.ticks = element_blank())+
   labs(title = "Greenbook Locations by City")
+
 
 
 
