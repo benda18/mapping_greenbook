@@ -14,34 +14,37 @@ library(xlsx)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-
-    # Application title
-    titlePanel("Remaining GreenBook Addresses that Still Geocode in 2024"),
-
-    # Sidebar 
-   sidebarLayout(
-   sidebarPanel(
-     # shiny::textInput(inputId = "year_sel.ti", 
-     #                     label = "Filter by GreenBook Edition", 
-     #                     value = c(1938, 1947, 1954, 1963)), 
-     # shiny::selectInput(inputId = "year_sel.si", 
-     #                    label = "Filter by GreenBook Edition", 
-     #                    choices = c(1938, 1947, 1954, 1963), 
-     #                    selected = c(1938, 1947, 1954, 1963), 
-     #                    multiple = T), 
-     shiny::radioButtons(inputId = "year_sel.rb", 
-                         label = "Filter by GreenBook Edition",
-                         choices = c(1938, 1947, 1954, 1963), 
-                         selected = 1938)
-     ),
-
-        
-        mainPanel(
-           leaflet::leafletOutput(outputId = "leaf_map", 
-                                  width = "auto", 
-                                  height = "600px")
-        )
+  
+  # Application title
+  titlePanel("Remaining GreenBook Addresses that Still Geocode in 2024"),
+  
+  # Sidebar 
+  sidebarLayout(
+    sidebarPanel(
+      # shiny::textInput(inputId = "year_sel.ti", 
+      #                     label = "Filter by GreenBook Edition", 
+      #                     value = c(1938, 1947, 1954, 1963)), 
+      # shiny::selectInput(inputId = "year_sel.si", 
+      #                    label = "Filter by GreenBook Edition", 
+      #                    choices = c(1938, 1947, 1954, 1963), 
+      #                    selected = c(1938, 1947, 1954, 1963), 
+      #                    multiple = T), 
+      shiny::radioButtons(inputId = "year_sel.rb", 
+                          label = "Filter by GreenBook Edition",
+                          choices = c(1938, 1947, 1954, 1963), 
+                          selected = 1938)
+    ),
+    
+    
+    mainPanel(
+      leaflet::leafletOutput(outputId = "leaf_map", 
+                             width = "auto", 
+                             height = "600px"), 
+      wellPanel(
+        fluidRow("Source Code: https://github.com/benda18/mapping_greenbook/blob/main/shiny_remaining_greenbook_addresses/app.R")
+      )
     )
+  )
 )
 
 # Define server logic 
@@ -97,8 +100,8 @@ server <- function(input, output) {
                                                      opacity = 0.5),
                      freezeAtZoom = FALSE))
   })
-
-    
+  
+  
 }
 
 # Run the application 
