@@ -11,7 +11,10 @@ library(shiny)
 library(leaflet)
 library(readxl)
 library(xlsx)
-library(rsconnect)
+#library(rsconnect)
+library(qrcode)
+library(jpeg)
+
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
@@ -33,7 +36,9 @@ ui <- fluidPage(
       shiny::radioButtons(inputId = "year_sel.rb", 
                           label = "Filter by GreenBook Edition",
                           choices = c(1938, 1947, 1954, 1963), 
-                          selected = 1938)
+                          selected = 1938), 
+      shiny::plotOutput(outputId = "qr_url", 
+                        height = "200px")
     ),
     
     
@@ -102,6 +107,13 @@ server <- function(input, output) {
                      freezeAtZoom = FALSE))
   })
   
+  output$qr_url <- renderPlot({
+    qr_app <- qrcode::qr_code(x = "https://tim-bender.shinyapps.io/shiny_remaining_greenbook_addresses/", 
+                              ecl = "H")
+    qr_app_logo <- add_logo(qr_app, 
+                            logo = "www/QRLOGO.jpg")
+    plot(qr_app_logo)
+  })
   
 }
 
