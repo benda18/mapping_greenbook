@@ -21,6 +21,7 @@ library(dplyr)
 #library(openrouteservice)
 library(geosphere)
 library(magrittr)
+library(shiny)
 
 # https://bookdown.org/nicohahn/making_maps_with_r5/docs/leaflet.html
 
@@ -126,39 +127,39 @@ gba[!duplicated(gba$Address),]
 
 # address map
 basemap %>%
-  addCircleMarkers(lng = gba[!duplicated(gba$Address),]$cen_lon, 
-                   lat = gba[!duplicated(gba$Address),]$cen_lat, 
-                   clusterOptions = 
-                     markerClusterOptions(
-                       showCoverageOnHover = TRUE,
-                       zoomToBoundsOnClick = T,
-                       spiderfyOnMaxZoom = T,
-                       removeOutsideVisibleBounds = F,
-                       spiderLegPolylineOptions = list(weight = 1.5,
-                                                       color = "black", 
-                                                       opacity = 0.5),
-                       freezeAtZoom = FALSE), 
-                   radius = 15, #tigris.cities$total*1.5,
-                   fillOpacity = 0.2,
-                   color  = "black",
-                   fill = "white")
+  addMarkers(lng = gba[!duplicated(gba$Address),]$cen_lon, 
+             lat = gba[!duplicated(gba$Address),]$cen_lat, 
+             clusterOptions = 
+               markerClusterOptions(
+                 showCoverageOnHover = TRUE,
+                 zoomToBoundsOnClick = T,
+                 spiderfyOnMaxZoom = T,
+                 removeOutsideVisibleBounds = F,
+                 spiderLegPolylineOptions = list(weight = 1.5,
+                                                 color = "black", 
+                                                 opacity = 0.5),
+                 freezeAtZoom = FALSE)) 
+                   #radius = 15, #tigris.cities$total*1.5,
+                   #fillOpacity = 0.2,
+                   #color  = "black",
+                   #fill = "white")
 
 # summary map
-basemap %>%
-  addCircleMarkers(lng=tigris.cities$X,
-                   lat=tigris.cities$Y, 
-                   clusterOptions = 
-                     markerClusterOptions(
-                       showCoverageOnHover = TRUE,
-                       zoomToBoundsOnClick = T,
-                       spiderfyOnMaxZoom = T,
-                       removeOutsideVisibleBounds = F,
-                       spiderLegPolylineOptions = list(weight = 1.5,
-                                                       color = "black", 
-                                                       opacity = 0.5),
-                       freezeAtZoom = FALSE), 
-                   radius = tigris.cities$total*1.5,
-                   fillOpacity = 0.2,
-                   color  = "black",
-                   fill = "white");basemap
-
+# basemap %>%
+#   addCircleMarkers(lng=tigris.cities$X,
+#                    lat=tigris.cities$Y, 
+#                    clusterOptions = 
+#                      markerClusterOptions(
+#                        showCoverageOnHover = TRUE,
+#                        zoomToBoundsOnClick = T,
+#                        spiderfyOnMaxZoom = T,
+#                        removeOutsideVisibleBounds = F,
+#                        spiderLegPolylineOptions = list(weight = 1.5,
+#                                                        color = "black", 
+#                                                        opacity = 0.5),
+#                        freezeAtZoom = FALSE), 
+#                    radius = tigris.cities$total*1.5,
+#                    fillOpacity = 0.2,
+#                    color  = "black",
+#                    fill = "white");basemap
+# 

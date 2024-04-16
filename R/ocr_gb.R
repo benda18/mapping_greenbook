@@ -24,17 +24,17 @@ getwd()
 #tesseract_download("eng", datapath = "data/dict/")
 
 # example----
-eng <- tesseract("eng")
-text <- tesseract::ocr("http://jeroen.github.io/images/testocr.png", engine = eng)
-cat(text)
-results <- tesseract::ocr_data("http://jeroen.github.io/images/testocr.png", engine = eng)
-results
+#eng <- tesseract("eng")
+#text <- tesseract::ocr("http://jeroen.github.io/images/testocr.png", engine = eng)
+#cat(text)
+#results <- tesseract::ocr_data("http://jeroen.github.io/images/testocr.png", engine = eng)
+#results
 
 # greenbook----
 
-gba <- read_xlsx("data/greenbook_addresses.xlsx")
-gbs <- read_xlsx("data/greenbook_citysummary.xlsx")
+#gba <- read_xlsx("data/greenbook_addresses.xlsx")
+#gbs <- read_xlsx("data/greenbook_citysummary.xlsx")
 
 eng <- tesseract("eng")
-ct1 <- ocr("img/ct3.png", engine = eng)
+ct1 <- ocr("img/temp.png", engine = eng)
 cat(ct1)
