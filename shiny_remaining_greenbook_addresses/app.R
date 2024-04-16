@@ -11,6 +11,7 @@ library(shiny)
 library(leaflet)
 library(readxl)
 library(xlsx)
+library(rsconnect)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
