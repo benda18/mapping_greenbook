@@ -33,8 +33,7 @@ ui <- fluidPage(
                          label = "Filter by GreenBook Edition",
                          choices = c(1938, 1947, 1954, 1963), 
                          selected = 1938)
-
-   ),
+     ),
 
         
         mainPanel(
@@ -84,7 +83,8 @@ server <- function(input, output) {
         # position it on the topleft
         position = "topleft"
       ) %>%
-      addMarkers(lng = gba[!duplicated(gba$Address),]$cen_lon, 
+      addMarkers(lng = gba[!duplicated(gba$Address) & 
+                             gba$greenbook_edition == input$year_sel.rb,]$cen_lon, 
                  lat = gba[!duplicated(gba$Address),]$cen_lat, 
                  clusterOptions = 
                    markerClusterOptions(
