@@ -35,7 +35,10 @@ ui <- fluidPage(
       #                    multiple = T), 
       shiny::radioButtons(inputId = "year_sel.rb", 
                           label = "Filter by GreenBook Edition",
-                          choices = c(1938, 1947, 1954, 1963), 
+                          choices = c("1938 (in progress)" = 1938, 
+                                      "1947 (not yet available)" = 1947, 
+                                      "1954 (not yet available)" = 1954, 
+                                      "1963 (not yet available)" = 1963), 
                           selected = 1938), 
       shiny::plotOutput(outputId = "qr_url", 
                         height = "200px")
