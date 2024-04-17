@@ -15,6 +15,7 @@ renv::status()
 rm(list=ls());cat('\f')
 gc()
 
+"https://docs.google.com/spreadsheets/d/1WSsBkYNjIPk3PqKZkyszcZA3HXEGPzbQY79G-BiAn0U/edit#gid=0"
 
 # gbsum <- read_xlsx("data/greenbook_citysummary.xlsx")
 
