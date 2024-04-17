@@ -26,6 +26,10 @@ gb$oneline <- paste(gb$Address,
                     gb$City,
                     gb$State, sep = ", ")
 
+# tidy
+gb$Type <- tolower(gb$Type)
+gb$Type[gb$Type == "tourist"] <- "private residence"
+
 for(i in 1:nrow(gb)){
   if(is.na(gb$cen_addr[i])){
     print(i)

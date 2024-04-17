@@ -97,7 +97,14 @@ server <- function(input, output) {
       ) %>%
       addMarkers(lng = gba[!duplicated(gba$Address) & 
                              gba$greenbook_edition == input$year_sel.rb,]$cen_lon, 
-                 lat = gba[!duplicated(gba$Address),]$cen_lat, 
+                 lat = gba[!duplicated(gba$Address) & 
+                             gba$greenbook_edition == input$year_sel.rb,]$cen_lat, 
+                 #popup = "popup_foo", 
+                 label = gba[!duplicated(gba$Address) & 
+                               gba$greenbook_edition == input$year_sel.rb,]$Type,
+                 labelOptions = labelOptions(
+                   textsize = "15px"
+                 ),
                  clusterOptions = 
                    markerClusterOptions(
                      showCoverageOnHover = TRUE,
