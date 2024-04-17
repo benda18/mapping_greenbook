@@ -15,7 +15,7 @@ library(xlsx)
 library(qrcode)
 library(jpeg)
 
-
+gba <- readRDS(file = "greenbook_addresses.rds")
 # Define UI for application that draws a histogram
 ui <- fluidPage(
   
@@ -63,7 +63,7 @@ server <- function(input, output) {
   output$leaf_map <- leaflet::renderLeaflet({
     
     #gba <- read_xlsx("greenbook_addresses.xlsx")
-    gba <- readRDS(file = "greenbook_addresses.rds")
+    
     
     leaflet() %>%
       # add different provider tiles
@@ -103,7 +103,17 @@ server <- function(input, output) {
                  label = gba[!duplicated(gba$Address) & 
                                gba$greenbook_edition == input$year_sel.rb,]$Type,
                  labelOptions = labelOptions(
-                   textsize = "15px"
+                   interactive = FALSE,
+                   clickable = NULL,
+                   noHide = NULL,
+                   permanent = FALSE,
+                   direction = "auto",
+                   offset = c(0, 0),
+                   opacity = 1,
+                   textsize = "15px",
+                   textOnly = F,
+                   style = NULL,
+                   sticky = T,
                  ),
                  clusterOptions = 
                    markerClusterOptions(
