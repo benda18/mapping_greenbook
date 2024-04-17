@@ -52,6 +52,7 @@ for(i in 1:nrow(gb)){
   rm(temp)
 }
 gb <- gb[,!grepl("^\\.", colnames(gb))] %>% .[!duplicated(.),]
+
 # remove leading rows and write to file
 xlsx::write.xlsx(x = gb[,!grepl("^\\.", colnames(gb))],
                  file = "data/greenbook_addresses.xlsx")
