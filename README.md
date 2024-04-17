@@ -11,6 +11,7 @@ To process the street addresses listed in select editions of the mid-20th Centur
 https://tim-bender.shinyapps.io/shiny_remaining_greenbook_addresses/
 
 # Sources
+* https://www.redlands.edu/study/schools-and-centers/css/urspatial-portfolio/mappingthegreenbook/
 * https://github.com/nypl-publicdomain/greenbook-map
 * https://docs.google.com/spreadsheets/d/1WSsBkYNjIPk3PqKZkyszcZA3HXEGPzbQY79G-BiAn0U/edit#gid=0
 * https://savingplaces.org/green-book-sites
