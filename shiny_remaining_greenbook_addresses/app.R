@@ -44,7 +44,7 @@ ui <- fluidPage(
                                       "1960s (dataset in progress)" = "1960s"), 
                           selected = "1930s"), 
       fluidRow(img(src="sometime1947.jpg", 
-                   width = "250pt")),
+                   width = "300pt")),
       shiny::plotOutput(outputId = "qr_url", 
                         height = "200px")
     ),
