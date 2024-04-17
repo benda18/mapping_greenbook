@@ -54,7 +54,7 @@ Status: Unknown", city = "Dallas", state = "TX"){
     gsub("\\(.*\\)", "", .)
   
   temp$address <- trimws(gsub("\\(.*$", "", temp$address))
-  temp$address <- paste(temp$address, "Dallas TX", sep = ", ")
+  #temp$address <- paste(temp$address, "Dallas TX", sep = ", ")
   
   temp.decades <-  lapply(X = unlist(strsplit(x = temp$years_listed, "-|,")), 
                           FUN = get_decade) %>%

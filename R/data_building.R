@@ -26,6 +26,9 @@ gb <- readxl::read_xlsx(path = "data/greenbook_addresses.xlsx")
 #gb <- full_join(gb, dal.df)
 
 
+
+gb$Address <- gsub(", Dallas TX$", "", gb$Address)
+
 gb$oneline <- paste(gb$Address,
                     gb$City,
                     gb$State, sep = ", ")
@@ -56,13 +59,13 @@ for(i in 1:nrow(gb)){
 gb <- gb[,!grepl("^\\.", colnames(gb))] %>% .[!duplicated(.),]
 
 # remove leading rows and write to file
-xlsx::write.xlsx(x = gb[,!grepl("^\\.", colnames(gb))],
+xlsx::write.xlsx(x = gb,
                  file = "data/greenbook_addresses.xlsx")
 # xlsx::write.xlsx(x = gb[,!grepl("^\\.", colnames(gb))],
 #                  file = "shiny_remaining_greenbook_addresses/greenbook_addresses.xlsx")
 
 
-saveRDS(object = gb[,!grepl("^\\.", colnames(gb))], 
+saveRDS(object = gb, 
         file = "shiny_remaining_greenbook_addresses/greenbook_addresses.rds")
 
 rm(gb)
