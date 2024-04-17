@@ -21,7 +21,7 @@ ncurl <- function(nc.name = "Alexander's Barber Shop"){
   return(glue("https://aahc.nc.gov/green-book/{var}"))
 }
 
-url_title <- c("2nd St. Barber Shop",
+nc.urls <- data.frame(name =  c("2nd St. Barber Shop",
   "Adams Tourist Home",
   "Addie Motel",
   "Alexander Hotel",
@@ -40,30 +40,26 @@ url_title <- c("2nd St. Barber Shop",
   "Bell's Restaurant",
   "Belmont",
   "Beth's Beauty Parlor",
-  "Biddleville Luncheonette", 
-  "Chicken 'N' Ribs")
+  "Biddleville Luncheonette"), 
+  url = NA) %>% as_tibble()
 
-url.url <- c("https://aahc.nc.gov/green-book/2nd-st-barber-shop", 
-             "https://aahc.nc.gov/green-book/adams-tourist-home", 
-             "https://aahc.nc.gov/green-book/addie-motel", 
-             "https://aahc.nc.gov/green-book/alexander-hotel", 
-             "https://aahc.nc.gov/green-book/alexanders-barber-shop", 
-             NA, 
-             "https://aahc.nc.gov/green-book/apex-julia-ellison", 
-             NA, 
-             "https://aahc.nc.gov/green-book/arcade-hotel-dining-room", 
-             rep(NA, 3), 
-             "https://aahc.nc.gov/green-book/b-h-cafe", 
-             rep(NA, 7), 
-             "https://aahc.nc.gov/green-book/chicken-n-ribs")
+nc.urls$url <- unlist(lapply(nc.urls$name, 
+                      ncurl))
 
-test <- as_tibble(data.frame(name = url_title, 
-           url = url.url)) %>%
-  mutate(test.url = NA)
 
-test$test.url <- unlist(lapply(test$name, 
-       ncurl))
+for(i in 1:nrow(nc.urls)){
+  nc.urls$url[i]
+  
+  temp_nameaddr <- rvest::read_html(nc.urls$url[i]) %>% 
+    rvest::html_element(., xpath = "/html/body/div[1]/div/div/div[2]/div/div[2]/main/section/article/div/div[1]/div[1]/div[2]") %>%
+    as.character() %>% 
+    gsub("\n| {2,}", "", .) %>%
+    gsub("</div></div>", "", .) %>%
+    gsub("^<.*>", "", .) %>%
+    strsplit(., "---") %>%
+    unlist()
+  
+  colnames(temp_nameaddr) <- c("Name", "Address")
+}
 
-test$test.url == test$url
-
-tail(test)
+# fails bc no city name
