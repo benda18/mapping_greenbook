@@ -84,9 +84,9 @@ server <- function(input, output) {
       # add a layers control
       addLayersControl(
         baseGroups = c(
+          "Esri.WorldStreetMap",
           "CartoDB.Positron",
           "OpenStreetMap",
-          "Esri.WorldStreetMap",
           "Esri.WorldImagery"
         ),
         # position it on the topleft
