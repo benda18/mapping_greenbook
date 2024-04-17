@@ -34,12 +34,12 @@ ui <- fluidPage(
       #                    selected = c(1938, 1947, 1954, 1963), 
       #                    multiple = T), 
       shiny::radioButtons(inputId = "year_sel.rb", 
-                          label = "Filter by GreenBook Edition",
-                          choices = c("1938 (in progress)" = 1938, 
-                                      "1947 (not yet available)" = 1947, 
-                                      "1954 (not yet available)" = 1954, 
-                                      "1963 (not yet available)" = 1963), 
-                          selected = 1938), 
+                          label = "Filter by Decade of Publication",
+                          choices = c("1930s (in progress)" = "1930s", 
+                                      "1940s (not yet available)" = "1940s", 
+                                      "1950s (not yet available)" = "1950s", 
+                                      "1960s (not yet available)" = "1960s"), 
+                          selected = "1930s"), 
       shiny::plotOutput(outputId = "qr_url", 
                         height = "200px")
     ),
@@ -106,13 +106,10 @@ server <- function(input, output) {
         # position it on the topleft
         position = "topleft"
       ) %>%
-      addMarkers(lng = gba[!duplicated(gba$Address) & 
-                             gba$greenbook_edition == input$year_sel.rb,]$cen_lon, 
-                 lat = gba[!duplicated(gba$Address) & 
-                             gba$greenbook_edition == input$year_sel.rb,]$cen_lat, 
+      addMarkers(lng = gba[gba$decade == input$year_sel.rb,]$cen_lon, 
+                 lat = gba[gba$decade == input$year_sel.rb,]$cen_lat, 
                  #popup = "popup_foo", 
-                 label = gba[!duplicated(gba$Address) & 
-                               gba$greenbook_edition == input$year_sel.rb,]$Type,
+                 label = gba[gba$decade == input$year_sel.rb,]$Type,
                  labelOptions = labelOptions(
                    interactive = FALSE,
                    clickable = NULL,
