@@ -22,6 +22,8 @@ gc()
 
 gb <- readxl::read_xlsx(path = "data/greenbook_addresses.xlsx")
 
+#gb <- full_join(gb, okla2)
+
 gb$oneline <- paste(gb$Address,
                     gb$City,
                     gb$State, sep = ", ")
@@ -49,7 +51,7 @@ for(i in 1:nrow(gb)){
   }
   rm(temp)
 }
-
+gb <- gb[,!grepl("^\\.", colnames(gb))] %>% .[!duplicated(.),]
 # remove leading rows and write to file
 xlsx::write.xlsx(x = gb[,!grepl("^\\.", colnames(gb))],
                  file = "data/greenbook_addresses.xlsx")
