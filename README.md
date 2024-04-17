@@ -12,6 +12,7 @@ https://tim-bender.shinyapps.io/shiny_remaining_greenbook_addresses/
 
 # Sources
 * https://www.redlands.edu/study/schools-and-centers/css/urspatial-portfolio/mappingthegreenbook/
+* https://publicdomain.nypl.org/greenbook-map/
 * https://github.com/nypl-publicdomain/greenbook-map
 * https://docs.google.com/spreadsheets/d/1WSsBkYNjIPk3PqKZkyszcZA3HXEGPzbQY79G-BiAn0U/edit#gid=0
 * https://savingplaces.org/green-book-sites
