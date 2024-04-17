@@ -9,8 +9,8 @@
 
 library(shiny)
 library(leaflet)
-library(readxl)
-library(xlsx)
+# library(readxl)
+# library(xlsx)
 #library(rsconnect)
 library(qrcode)
 library(jpeg)
@@ -36,10 +36,10 @@ ui <- fluidPage(
       #                    multiple = T), 
       shiny::radioButtons(inputId = "year_sel.rb", 
                           label = "Filter by Decade of Publication",
-                          choices = c("1930s (in progress)" = "1930s", 
-                                      "1940s (not yet available)" = "1940s", 
-                                      "1950s (not yet available)" = "1950s", 
-                                      "1960s (not yet available)" = "1960s"), 
+                          choices = c("1930s (dataset in progress)" = "1930s", 
+                                      "1940s (dataset in progress)" = "1940s", 
+                                      "1950s (dataset in progress)" = "1950s", 
+                                      "1960s (dataset in progress)" = "1960s"), 
                           selected = "1930s"), 
       shiny::plotOutput(outputId = "qr_url", 
                         height = "200px")
