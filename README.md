@@ -11,6 +11,7 @@ To process the street addresses listed in select editions of the mid-20th Centur
 https://tim-bender.shinyapps.io/shiny_remaining_greenbook_addresses/
 
 # Sources
+* https://cityofdallaspreservation.wordpress.com/2019/01/22/dallas-green-book-listings/
 * https://walnuthillsstories.org/projects/black-business-district-information-from-green-books/green-book/
 * https://www.redlands.edu/study/schools-and-centers/css/urspatial-portfolio/mappingthegreenbook/
 * https://publicdomain.nypl.org/greenbook-map/
