@@ -25,7 +25,7 @@ get_decade <- function(yr1){
 p.dal <- function(txt = "2nd Avenue Motel
 Address: 214 Long Street (Location unknown)
 Years Listed: 1956-57
-Status: Unknown"){
+Status: Unknown", city = "Dallas", state = "TX"){
   require(readr)
   require(janitor)
   library(data.table)
@@ -96,6 +96,8 @@ Status: Unknown"){
   colnames(temp)[colnames(temp) == "variable"] <- "decade"
   colnames(temp)[colnames(temp) == "name"] <- "Name"
   colnames(temp)[colnames(temp) == "address"] <- "Address"
+  temp$City <- city
+  temp$State <- state
   
   # Types
   temp$Type <- NA
