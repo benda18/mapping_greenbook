@@ -62,8 +62,8 @@ server <- function(input, output) {
   
   output$leaf_map <- leaflet::renderLeaflet({
     
-    gba <- read_xlsx("greenbook_addresses.xlsx")
-    
+    #gba <- read_xlsx("greenbook_addresses.xlsx")
+    gba <- readRDS(file = "greenbook_addresses.rds")
     
     leaflet() %>%
       # add different provider tiles

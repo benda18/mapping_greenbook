@@ -49,7 +49,12 @@ for(i in 1:nrow(gb)){
 # remove leading rows and write to file
 xlsx::write.xlsx(x = gb[,!grepl("^\\.", colnames(gb))],
                  file = "data/greenbook_addresses.xlsx")
-xlsx::write.xlsx(x = gb[,!grepl("^\\.", colnames(gb))],
-                 file = "shiny_remaining_greenbook_addresses/greenbook_addresses.xlsx")
+# xlsx::write.xlsx(x = gb[,!grepl("^\\.", colnames(gb))],
+#                  file = "shiny_remaining_greenbook_addresses/greenbook_addresses.xlsx")
+
+
+saveRDS(object = gb[,!grepl("^\\.", colnames(gb))], 
+        file = "shiny_remaining_greenbook_addresses/greenbook_addresses.rds")
+
 rm(gb)
 
