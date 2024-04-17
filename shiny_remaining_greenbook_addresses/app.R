@@ -15,6 +15,8 @@ library(leaflet)
 library(qrcode)
 library(jpeg)
 
+sb.wid <- 3
+mp.wid <- 12-sb.wid
 
 gba <- readRDS(file = "greenbook_addresses.rds")
 # Define UI for application that draws a histogram
@@ -25,7 +27,7 @@ ui <- fluidPage(
   
   # Sidebar 
   sidebarLayout(
-    sidebarPanel(
+    sidebarPanel(width = sb.wid,
       # shiny::textInput(inputId = "year_sel.ti", 
       #                     label = "Filter by GreenBook Edition", 
       #                     value = c(1938, 1947, 1954, 1963)), 
@@ -41,23 +43,14 @@ ui <- fluidPage(
                                       "1950s (dataset in progress)" = "1950s", 
                                       "1960s (dataset in progress)" = "1960s"), 
                           selected = "1930s"), 
+      fluidRow(img(src="sometime1947.jpg", 
+                   width = "250pt")),
       shiny::plotOutput(outputId = "qr_url", 
                         height = "200px")
     ),
     
     
-    mainPanel(
-      wellPanel(
-        #column(
-         # width = 6,
-          fluidRow(
-            h4((em("There will be a day sometime in the near future when this guide will not have to be published. That is when we as a race will have equal rights and privileges in the United States.")))
-          ),
-          fluidRow(
-            h4(em(" -Victor Green"))
-          )
-        #)
-      ),
+    mainPanel(width = mp.wid,
       leaflet::leafletOutput(outputId = "leaf_map", 
                              width = "auto", 
                              height = "600px"), 
@@ -70,7 +63,6 @@ ui <- fluidPage(
 
 # Define server logic 
 server <- function(input, output) {
-  
   
   output$leaf_map <- leaflet::renderLeaflet({
     
@@ -148,3 +140,4 @@ server <- function(input, output) {
 
 # Run the application 
 shinyApp(ui = ui, server = server)
+
