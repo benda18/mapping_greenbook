@@ -20,7 +20,7 @@ gba <- readRDS(file = "greenbook_addresses.rds")
 ui <- fluidPage(
   
   # Application title
-  titlePanel("Remaining GreenBook Addresses that Still Geocode in 2024"),
+  titlePanel("Remaining Green Book Addresses that Geocode in 2024"),
   
   # Sidebar 
   sidebarLayout(
@@ -46,6 +46,17 @@ ui <- fluidPage(
     
     
     mainPanel(
+      wellPanel(
+        #column(
+         # width = 6,
+          fluidRow(
+            h4((em("There will be a day sometime in the near future when this guide will not have to be published. That is when we as a race will have equal rights and privileges in the United States.")))
+          ),
+          fluidRow(
+            h4(em(" -Victor Green"))
+          )
+        #)
+      ),
       leaflet::leafletOutput(outputId = "leaf_map", 
                              width = "auto", 
                              height = "600px"), 
