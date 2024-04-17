@@ -23,6 +23,8 @@ gc()
 gb <- readxl::read_xlsx(path = "data/greenbook_addresses.xlsx")
 
 #gb <- full_join(gb, okla2)
+#gb <- full_join(gb, dal.df)
+
 
 gb$oneline <- paste(gb$Address,
                     gb$City,
@@ -65,4 +67,4 @@ saveRDS(object = gb[,!grepl("^\\.", colnames(gb))],
 
 rm(gb)
 
-library(jsonlite)
+

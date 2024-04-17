@@ -1,5 +1,7 @@
 library(dplyr)
 
+rm(list=ls());cat('\f')
+
 "https://cityofdallaspreservation.wordpress.com/2019/01/22/dallas-green-book-listings/"
 
 get_decade <- function(yr1){
@@ -281,14 +283,14 @@ Note: Now the Inn of the Dove",
       )
 
 
-out.df <- NULL
+dal.df <- NULL
 for(i in 1:length(the.dallas)){
-  out.df <- rbind(out.df, 
+  dal.df <- rbind(dal.df, 
                   p.dal(the.dallas[i]))
   
 
 }
 
-out.df
-tail(out.df)
+dal.df
+tail(dal.df)
 
