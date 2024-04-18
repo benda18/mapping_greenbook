@@ -55,7 +55,8 @@ ui <- fluidPage(
                              width = "auto", 
                              height = "600px"), 
       wellPanel(
-        fluidRow("Source Code: https://github.com/benda18/mapping_greenbook/blob/main/shiny_remaining_greenbook_addresses/app.R")
+        fluidRow("Source Code: https://github.com/benda18/mapping_greenbook/blob/main/shiny_remaining_greenbook_addresses/app.R"), 
+        fluidRow("Download Data: https://github.com/benda18/mapping_greenbook/raw/main/data/greenbook_addresses.xlsx")
       )
     )
   )
