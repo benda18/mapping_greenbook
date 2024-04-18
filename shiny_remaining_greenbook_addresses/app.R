@@ -14,6 +14,7 @@ library(leaflet)
 #library(rsconnect)
 library(qrcode)
 library(jpeg)
+library(ggplot2)
 
 sb.wid <- 3
 mp.wid <- 12-sb.wid
@@ -64,6 +65,23 @@ ui <- fluidPage(
 
 # Define server logic 
 server <- function(input, output) {
+  
+  output$guides <- renderPlot({
+    df <- data.frame(guide = c("Chauffeur's Travelers Bureau Inc.", 
+                         "Hackley & Harrison's Hotel and Apartment Guide for Colored Travelers",
+                         "Division of Negro Affairs: Tentative List of Hotels Operated by Negroes",
+                         rep("The Negro Motorist Green Book",21), 
+                         "The Negro Handbood", 
+                         "Grayson's Travel and Business Guide", 
+                         rep("Travelguide", 3), 
+                         rep("GO Guide to Pleasant Motoring", 2), 
+                         "Nationwide Hotel Association Director and Guide to Travel", 
+                         "The Bronze American"), 
+               years = c(1933, 1930, 1937, 1939:1941, 
+                         1947:1963, 1966, 1942, 1949, 1947, 
+                         1949, 1952, 
+                         1955, 1957, 1958, 1961)) %>% as_tibble()
+  })
   
   output$leaf_map <- leaflet::renderLeaflet({
     
