@@ -5,6 +5,7 @@ library(xlsx)
 #library(censusxy)
 #remotes::install_github("chris-prener/censusxy")
 library(janitor)
+library(censusxy)
 
 
 renv::snapshot()

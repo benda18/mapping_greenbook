@@ -36,5 +36,5 @@ getwd()
 #gbs <- read_xlsx("data/greenbook_citysummary.xlsx")
 
 eng <- tesseract("eng")
-ct1 <- ocr("img/temp.png", engine = eng)
+ct1 <- ocr("img/temp.jpg", engine = eng)
 cat(ct1)
