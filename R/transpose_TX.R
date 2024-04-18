@@ -7,24 +7,7 @@ rm(list=ls());cat('\f')
 
 "https://thc.texas.gov/learn/historic-resources-survey/african-american-travel-guide-survey-project"
 
-p.tx <- function(txt1 = "Name
-Conyer's Gifts
-Description
-retail
-Latitude
-31.772121
-Longitude
--106.462785
-Extant?
-Y
-Address #
-2314
-Street (Historic [Current])
-Bassett Ave
-City
-El Paso
-County
-El Paso"){
+p.tx <- function(txt1){
   require(dplyr)
   require(glue)
   temp <- txt1 %>% read_tsv(., 
@@ -32,21 +15,23 @@ El Paso"){
   temp <- temp$X1 %>%
     as.vector
   
-  gsub("#", "", "tim # b")
+  #gsub("#", "", "tim # b")
   
-  temp[which((1:length(temp) %% 2) == 1)]
+  #temp[which((1:length(temp) %% 2) == 1)]
   temp.df <- data.frame(name = temp[which((1:length(temp) %% 2) == 1)], 
                         val = temp[which((1:length(temp) %% 2) == 0)])
   
-  as_tibble(data.frame(decade = NA, 
+  as_tibble(data.frame(decade = "not stated", 
                        State  = "Texas",
                        City   = temp.df$val[temp.df$name == "City"], 
                        Type   = temp.df$val[temp.df$name == "Description"],
-                       Name   = temp.df$val[temp.df$name == "name"], 
-                       Address = glue("{temp.df$val[temp.df$name == \"Address #\"]}"), 
-                       oneline = NA, 
-                       cen_lon = NA, 
-                       cen_lat = NA ))
+                       Name   = temp.df$val[temp.df$name == "Name"], 
+                       Address = glue("{temp.df$val[temp.df$name == \"Address #\"]} {temp.df$val[grepl(pattern = \"^Street\", 
+                                      x =temp.df$name)]}"), 
+                       oneline = glue("{temp.df$val[temp.df$name == \"Address #\"]} {temp.df$val[grepl(pattern = \"^Street\", 
+                                      x =temp.df$name)]}, {temp.df$val[temp.df$name == \"City\"]}, Texas"), 
+                       cen_lon = temp.df$val[temp.df$name == "Longitude"], 
+                       cen_lat = temp.df$val[temp.df$name == "Latitude"] ))
 }
 
-p.tx()
+some.tx <- c("")
