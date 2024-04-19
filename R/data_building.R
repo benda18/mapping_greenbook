@@ -26,7 +26,7 @@ gb <- readxl::read_xlsx(path = "data/greenbook_addresses.xlsx")
 
 #gb <- full_join(gb, okla2)
 #gb <- full_join(gb, dal.df)
-gb <- full_join(gb, tx.out[!duplicated(tx.out),])
+#gb <- full_join(gb, tx.out[!duplicated(tx.out),])
 
 
 gb$Address <- gsub(", Dallas TX$", "", gb$Address)
