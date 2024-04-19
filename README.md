@@ -1,7 +1,7 @@
 # mapping_greenbook
 
 
-“There will be a day sometime in the near future when this guide will not have to be published. That is when we as a race will have equal rights and privileges in the United States.” -Victor Green
+“There will be a day sometime in the near future when this guide will not have to be published. That is when we as a race will have equal rights and privileges in the United States.” -Victor Green, creator and Publisher of the Negro Motorist Green Book 
 
 
 # Purpose
