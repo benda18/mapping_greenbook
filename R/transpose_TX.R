@@ -60,4 +60,4 @@ for(i in 1:nrow(guide)){
   #p.tx(unlist((guide$description[i])))
 }
 
-tx.out
+tx.out$decade[tx.out$decade == "not stated"] <- "unknown"

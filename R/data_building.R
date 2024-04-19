@@ -7,6 +7,7 @@ library(xlsx)
 library(janitor)
 library(censusxy)
 
+library(dplyr)
 
 renv::snapshot()
 renv::status()
