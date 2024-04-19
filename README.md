@@ -1,8 +1,7 @@
 # mapping_greenbook
-
-
-“There will be a day sometime in the near future when this guide will not have to be published. That is when we as a race will have equal rights and privileges in the United States.” -Victor Green, creator and Publisher of the Negro Motorist Green Book 
-
+![sometime1947](https://github.com/benda18/mapping_greenbook/assets/3075048/1542558f-3a84-48d0-bbe2-5cfb19692b29)
+ 
+ -Victor Green, creator and Publisher of the Negro Motorist Green Book 
 
 # Purpose
 To process the street addresses listed in select editions of the mid-20th Century [Negro Motorist Green Book](https://en.wikipedia.org/wiki/The_Negro_Motorist_Green_Book) through a contemporary geocoding service such as that from the US Census Bureau to see which addresses still return a result.  Show results on an interactive map.  
