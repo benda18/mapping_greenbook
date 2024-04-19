@@ -20,6 +20,14 @@ sb.wid <- 3
 mp.wid <- 12-sb.wid
 
 gba <- readRDS(file = "greenbook_addresses.rds")
+
+gba$decade[gba$decade != "unknown"] <- paste("Decade of Publication: ", 
+                                             gba$decade[gba$decade != "unknown"], 
+                                             sep = " ")
+gba$decade[gba$decade == "unknown"] <- "Decade(s) of Publication Unknown"
+
+gba$marker_text <- paste(gba$decade, "//", gba$Type)
+
 # Define UI for application that draws a histogram
 ui <- fluidPage(
   
@@ -37,13 +45,14 @@ ui <- fluidPage(
       #                    choices = c(1938, 1947, 1954, 1963), 
       #                    selected = c(1938, 1947, 1954, 1963), 
       #                    multiple = T), 
-      shiny::radioButtons(inputId = "year_sel.rb", 
-                          label = "Filter by Decade of Publication",
-                          choices = c("1930s (dataset in progress)" = "1930s", 
-                                      "1940s (dataset in progress)" = "1940s", 
-                                      "1950s (dataset in progress)" = "1950s", 
-                                      "1960s (dataset in progress)" = "1960s"), 
-                          selected = "1930s"), 
+      # shiny::radioButtons(inputId = "year_sel.rb", 
+      #                     label = "Filter by Decade of Publication",
+      #                     choices = c("1930s (dataset in progress)" = "1930s", 
+      #                                 "1940s (dataset in progress)" = "1940s", 
+      #                                 "1950s (dataset in progress)" = "1950s", 
+      #                                 "1960s (dataset in progress)" = "1960s", 
+      #                                 "Unknown / Unattributed" = "unknown"), 
+      #                     selected = "1930s"), 
       fluidRow(img(src="sometime1947.jpg", 
                    width = "300pt")),
       shiny::plotOutput(outputId = "qr_url", 
@@ -123,10 +132,10 @@ server <- function(input, output) {
         # position it on the topleft
         position = "topleft"
       ) %>%
-      addMarkers(lng = gba[gba$decade == input$year_sel.rb,]$cen_lon, 
-                 lat = gba[gba$decade == input$year_sel.rb,]$cen_lat, 
+      addMarkers(lng = gba$cen_lon,#[gba$decade == input$year_sel.rb,]$cen_lon, 
+                 lat = gba$cen_lat,#[gba$decade == input$year_sel.rb,]$cen_lat, 
                  #popup = "popup_foo", 
-                 label = gba[gba$decade == input$year_sel.rb,]$Type,
+                 label = gba$marker_text,#[gba$decade == input$year_sel.rb,]$Type,
                  labelOptions = labelOptions(
                    interactive = FALSE,
                    clickable = NULL,
