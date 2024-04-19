@@ -2046,6 +2046,33 @@
       ],
       "Hash": "a84e2cc86d07289b3b6f5069df7a004c"
     },
+    "tidycensus": {
+      "Package": "tidycensus",
+      "Version": "1.6.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "crayon",
+        "dplyr",
+        "httr",
+        "jsonlite",
+        "purrr",
+        "rappdirs",
+        "readr",
+        "rlang",
+        "rvest",
+        "sf",
+        "stringr",
+        "tidyr",
+        "tidyselect",
+        "tigris",
+        "units",
+        "utils",
+        "xml2"
+      ],
+      "Hash": "c77c57b67d43addfe568dba21ef4b811"
+    },
     "tidykml": {
       "Package": "tidykml",
       "Version": "0.1.2",
