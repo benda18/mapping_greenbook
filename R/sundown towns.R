@@ -16,6 +16,254 @@ library(readr)
 
 rm(list=ls());cat('\f')
 
+
+jus.in <- read_lines("Advance
+Albany
+Albion
+Alexandria
+Andrews
+Arcadia
+Argos
+Attica
+Auburn
+Aurora
+Austin
+Avilla
+Batesville
+Bedford
+Beech Grove
+Berne
+Bicknell
+Bloomfield
+Bluffton
+Boswell
+Bourbon
+Bremen
+Brook
+Brooklyn
+Brookston
+Brookville
+Brownsburg
+Brownstown
+Burnettsville
+Butler City
+Cambridge City
+Camden
+Campbellsburg
+Cannelton
+Carmel
+Cayuga
+Cedar Lake
+Centerville
+Chandler
+Chesterfield
+Chesterton
+Churubusco
+Cicero
+Clarksville
+Clay City
+Columbia City
+Converse
+Corydon
+Covington
+Crawford
+Crothersville
+Crown Point
+Dale
+Daleville
+Danville
+Decatur
+Delphi
+Deputy
+Dillsboro
+Dublin
+Dugger
+Dyer
+East Gary
+Eaton
+Ellettsville
+Elnora
+Elwood
+English
+Fairmount
+Fairview Park
+Farmersburg
+Farmland
+Ferdinand
+Flora
+Fort Branch
+Fortville
+Francesville
+Frankfort
+Frankton
+Fremont
+Fulton County
+Galena
+Gas City
+General
+Geneva
+Goodland
+Goshen
+Grand View
+Greendale
+Greenfield
+Greensburg
+Greentown
+Greenwood
+Hagerstown
+Hancock County
+Hartford City
+Haubstadt
+Hebron
+Henryville
+Highland
+Hobart
+Hope
+Howard County
+Huntingburg
+Huntington
+Hymera
+Jamestown
+Jasonville
+Jasper
+Jonesboro
+Kendallville
+Kentland
+Knox
+Kouts
+Ladoga
+LaGrange
+Lagro
+Lapel
+Laurel
+Leavenworth
+Lexington
+Ligonier
+Linton
+Lizton
+Long Beach
+Loogootee
+Lowell
+Lynn
+Marengo
+Martinsville
+Mentone
+Merrillville
+Middlebury
+Middletown
+Milan
+Milltown
+Milton
+Mishawaka
+Mitchell
+Monon
+Monroeville
+Montezuma
+Monticello
+Montpelier
+Mooresville
+Morgantown
+Morocco
+Morristown
+Mulberry
+Munster
+Nappanee
+New Carlisle
+New Chicago
+New Harmony
+New Haven
+New Palestine
+New Paris
+New Pekin
+New Whiteland
+Newburg
+North Judson
+North Liberty
+North Manchester
+North Webster
+Odon
+Ogden Dunes
+Oolitic
+Orleans
+Osceola
+Osgood
+Ossian
+Owensville
+Oxford
+Parker City
+Pendleton
+Perry County
+Petersburg
+Pierceton
+Plymouth
+Porter
+Poseyville
+Redkey
+Remington
+Rensselaer
+Ridgeville
+Roachdale
+Roann
+Roanoke
+Rochester
+Rockport
+Rome City
+Rossville
+Royal Center
+Russiaville
+Salem
+Schererville
+Scottsburg
+Seelyville
+Sellersburg
+Shelburn
+Shirley
+Shoals
+Sidney
+Silver Lake
+South Whitley
+Speedway
+St. John
+Stinesville
+Summitville
+Sunman
+Swayzee
+Sweetser
+Syracuse
+Tell City
+Thorntown
+Tipton
+Trail Creek
+Tri-Lakes
+Utica
+Valparaiso
+Van Buren
+Veedersburg
+Versailles
+Vevay
+Wabash
+Wakarusa
+Walkerton
+Walton
+Warren
+Waterloo
+West Lafayette
+West Terre Haute
+Westfield
+Whiteland
+Whitestown
+Whiting
+Williamsport
+Winamac
+Windfall City
+Winslow
+Wolcott
+Woodburn
+Worthington
+Yorktown
+Zionsville
+") %>% paste(., ", Indiana", sep = "")
+
 jus.ar <- read_lines("Alix
 Altus
 Amity
@@ -505,7 +753,9 @@ sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ",
                jus.tn, 
                jus.ky, 
                jus.ok, 
-               jus.tx),]
+               jus.tx, 
+               jus.in, 
+               jus.ms, jus.la),]
 sundown.pl <- sundown.pl[paste(sundown.pl$NAME, ", ", 
                                sundown.pl$STATE_NAME, sep = "") %in% 
                            c(jus.nc, 
@@ -517,7 +767,10 @@ sundown.pl <- sundown.pl[paste(sundown.pl$NAME, ", ",
                              jus.tn, 
                              jus.ky, 
                              jus.ok, 
-                             jus.tx),]
+                             jus.tx, 
+                             jus.in, 
+                             jus.ms, 
+                             jus.la),]
 
 
 expelled.places <- tigris::places( cb = T) 

@@ -15,23 +15,14 @@ library(leaflet)
 library(qrcode)
 library(jpeg)
 library(ggplot2)
+library(sf)
+
+renv::snapshot()
 
 sb.wid <- 3
 mp.wid <- 12-sb.wid
 
-gba <- readRDS(file = "greenbook_addresses.rds")
-expelled.counties <- readRDS(file = "exp_co.rds")
-expelled.places   <- readRDS(file = "exp_pl.rds")
 
-sundown.co        <- readRDS(file = "sd_co.rds")
-sundown.pl        <- readRDS(file = "sd_pl.rds")
-
-gba$decade[gba$decade != "unknown"] <- paste("Decade of Publication: ", 
-                                             gba$decade[gba$decade != "unknown"], 
-                                             sep = " ")
-gba$decade[gba$decade == "unknown"] <- "Decade(s) of Publication Unknown"
-
-gba$marker_text <- paste(gba$decade, "//", gba$Type)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
@@ -104,7 +95,19 @@ server <- function(input, output) {
   
   output$leaf_map <- leaflet::renderLeaflet({
     
-    #gba <- read_xlsx("greenbook_addresses.xlsx")
+    gba <- readRDS(file = "greenbook_addresses.rds")
+    expelled.counties <- readRDS(file = "exp_co.rds")
+    expelled.places   <- readRDS(file = "exp_pl.rds")
+    
+    sundown.co        <- readRDS(file = "sd_co.rds")
+    sundown.pl        <- readRDS(file = "sd_pl.rds")
+    
+    gba$decade[gba$decade != "unknown"] <- paste("Decade of Publication: ", 
+                                                 gba$decade[gba$decade != "unknown"], 
+                                                 sep = " ")
+    gba$decade[gba$decade == "unknown"] <- "Decade(s) of Publication Unknown"
+    
+    gba$marker_text <- paste(gba$decade, "//", gba$Type)
     
     
     leaflet() %>%
@@ -160,7 +163,7 @@ server <- function(input, output) {
       addPolygons(data = sundown.co, 
                   stroke = T,
                   fillColor = "brown", 
-                  fillOpacity = 0.2,
+                  fillOpacity = 0.1,
                   opacity = 1,
                   color = "brown",
                   weight = 2, 
@@ -170,7 +173,7 @@ server <- function(input, output) {
       addPolygons(data = sundown.pl, 
                   stroke = T,
                   fillColor = "brown", 
-                  fillOpacity = 0.2,
+                  fillOpacity = 0.1,
                   opacity = 1,
                   color = "brown",
                   weight = 2, 
