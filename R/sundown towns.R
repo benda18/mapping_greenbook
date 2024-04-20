@@ -16,6 +16,69 @@ library(readr)
 
 rm(list=ls());cat('\f')
 
+jus.al <- read_lines("Arab
+Chickasaw
+Cullman
+Cullman County
+Dixie
+Fyffe
+Good Hope
+Hanceville
+Hokes Bluff
+Nauvoo
+Oneonta
+Orange Beach
+Sand Mountain
+Vestavia Hills
+West Point
+Winston County
+")%>% paste(., ", Alabama", sep = "")
+
+jus.fl <- read_lines("Altha
+Cedar Key
+Coral Gables
+Daytona Beach Shores
+Delray Beach
+Elfers
+Flagler Beach
+Gulfport
+Holmes Beach
+Longboat Key
+Melbourne Beach
+Miami Beach
+Myakka City
+Ocoee
+Old Homosassa
+Palm Beach
+Samsula
+Southport
+St. Cloud
+Venice
+Winterhaven
+Yankeetown
+") %>% paste(., ", Florida", sep = "")
+
+jus.ga <- read_lines("Avondale Estates
+Banks County
+Blairsville
+Blue Ridge
+Chamblee
+Clayton
+Dahlonega
+Dawson County
+Forsyth County
+Gilmer County
+Murray County
+Palmetto
+Pickens County
+Rabun County
+Thomas County
+Towns County
+Tybee Island
+Union County
+Watkinsville") %>%
+  paste(., ", Georgia", sep = "")
+
 jus.sc <- read_lines("Ellenton
 Folly Beach
 Georgetown
@@ -54,16 +117,21 @@ sundown.pl <- tigris::places(cb = T) %>%
   mutate(., 
          desc = "Possible Sundown Town")
 
-
-
+ls(pattern = "jus")
 sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ", 
                  sundown.co$STATE_NAME, sep = "") %in% 
              c(jus.nc, 
-               jus.sc),]
+               jus.sc, 
+               jus.al, 
+               jus.fl, 
+               jus.ga),]
 sundown.pl <- sundown.pl[paste(sundown.pl$NAME, ", ", 
                                sundown.pl$STATE_NAME, sep = "") %in% 
-                           c(jus.nc,
-                             jus.sc),]
+                           c(jus.nc, 
+                             jus.sc, 
+                             jus.al, 
+                             jus.fl, 
+                             jus.ga),]
 
 
 expelled.places <- tigris::places( cb = T) 
