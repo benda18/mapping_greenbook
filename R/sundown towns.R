@@ -8,6 +8,7 @@ library(renv)
 library(tidycensus)
 library(leaflet)
 library(sf)
+library(readr)
 
 #renv::snapshot()
 
@@ -15,21 +16,55 @@ library(sf)
 
 rm(list=ls());cat('\f')
 
+jus.sc <- read_lines("Ellenton
+Folly Beach
+Georgetown
+Hamburg
+Isle of Palms
+Moncks Corner
+Princeton
+Salem
+Shandon
+") %>%
+  paste(., ", South Carolina", sep = "")
 
-greenwood.tulsa.ok <- county_subdivisions(state = "OK",  
-                                          cb = T)
-grep(pattern = "Greenwood", x = greenwood.tulsa.ok$NAME, 
-     value = T)
+jus.nc <- readr::read_lines("Bakersville
+Brasstown
+Faith
+Graham County
+Hot Springs
+King
+Kure Beach
+Mayodan
+Mitchell County
+Rosman
+Southern Shores
+Spruce Pine
+Surf City
+Swain County
+Trent Woods
+Wrightsville Beach") %>%
+  paste(., ", North Carolina", sep = "")
 
-pl.ok <- tigris::places(state = "OK", cb = T)
 
-grep(pattern = "Greenwood", x = pl.ok$NAME, 
-     value = T)
+sundown.co <- tigris::counties(cb = T) %>%
+  mutate(., 
+         desc = "Possible Sundown Town")
+sundown.pl <- tigris::places(cb = T) %>%
+  mutate(., 
+         desc = "Possible Sundown Town")
 
 
-tidycensus::get_decennial(geography = "county", 
-                          state = "NC", 
-                          year = 1990)
+
+sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ", 
+                 sundown.co$STATE_NAME, sep = "") %in% 
+             c(jus.nc, 
+               jus.sc),]
+sundown.pl <- sundown.pl[paste(sundown.pl$NAME, ", ", 
+                               sundown.pl$STATE_NAME, sep = "") %in% 
+                           c(jus.nc,
+                             jus.sc),]
+
 
 expelled.places <- tigris::places( cb = T) 
 expelled.counties <- tigris::counties(cb = T) 
@@ -149,15 +184,39 @@ leaflet::leaflet() %>%
               popup = paste(expelled.places$NAME, 
                             expelled.places$STATE_NAME, 
                             sep = ", ")) %>%
+  addPolygons(data = sundown.co, 
+              stroke = T,
+              fillColor = "brown", 
+              fillOpacity = 0.2,
+              opacity = 1,
+              color = "brown",
+              weight = 2, 
+              popup = paste(sundown.co$NAME, " County, ",
+                            sundown.co$STATE_NAME, 
+                            sep = "")) %>%
+  addPolygons(data = sundown.pl, 
+              stroke = T,
+              fillColor = "brown", 
+              fillOpacity = 0.2,
+              opacity = 1,
+              color = "brown",
+              weight = 2, 
+              popup = paste(sundown.pl$NAME, 
+                            sundown.pl$STATE_NAME, 
+                            sep = ", ")) %>%
   addLegend(position = "bottomright",
             title = "Legend",
             #pal = palc, 
             #colors = "magma", 
-            colors = "#03F",
+            colors = c("#03F", "brown"),
             opacity = 1,
-            labels = "Place that once expelled<br>
-            entire Black population")
+            labels = c("Place that once expelled<br>
+            entire Black population", 
+                       "Possible Sundown Town"))
 
 
 saveRDS(expelled.counties, "shiny_remaining_greenbook_addresses/exp_co.rds")
 saveRDS(expelled.places, "shiny_remaining_greenbook_addresses/exp_pl.rds")
+
+saveRDS(sundown.co, "shiny_remaining_greenbook_addresses/sd_co.rds")
+saveRDS(sundown.pl, "shiny_remaining_greenbook_addresses/sd_pl.rds")

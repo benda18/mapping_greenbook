@@ -23,6 +23,9 @@ gba <- readRDS(file = "greenbook_addresses.rds")
 expelled.counties <- readRDS(file = "exp_co.rds")
 expelled.places   <- readRDS(file = "exp_pl.rds")
 
+sundown.co        <- readRDS(file = "sd_co.rds")
+sundown.pl        <- readRDS(file = "sd_pl.rds")
+
 gba$decade[gba$decade != "unknown"] <- paste("Decade of Publication: ", 
                                              gba$decade[gba$decade != "unknown"], 
                                              sep = " ")
@@ -154,14 +157,35 @@ server <- function(input, output) {
                   popup = paste(expelled.places$NAME, 
                                 expelled.places$STATE_NAME, 
                                 sep = ", ")) %>%
+      addPolygons(data = sundown.co, 
+                  stroke = T,
+                  fillColor = "brown", 
+                  fillOpacity = 0.2,
+                  opacity = 1,
+                  color = "brown",
+                  weight = 2, 
+                  popup = paste(sundown.co$NAME, " County, ",
+                                sundown.co$STATE_NAME, 
+                                sep = "")) %>%
+      addPolygons(data = sundown.pl, 
+                  stroke = T,
+                  fillColor = "brown", 
+                  fillOpacity = 0.2,
+                  opacity = 1,
+                  color = "brown",
+                  weight = 2, 
+                  popup = paste(sundown.pl$NAME, 
+                                sundown.pl$STATE_NAME, 
+                                sep = ", ")) %>%
       addLegend(position = "bottomright",
                 title = "Legend",
                 #pal = palc, 
                 #colors = "magma", 
-                colors = "#03F",
+                colors = c("#03F", "brown"),
                 opacity = 1,
-                labels = "Place that once expelled<br>
-            entire Black population") %>%
+                labels = c("Place that once expelled<br>
+            entire Black population", 
+                           "Possible Sundown Town")) %>%
       addMarkers(lng = gba$cen_lon,#[gba$decade == input$year_sel.rb,]$cen_lon, 
                  lat = gba$cen_lat,#[gba$decade == input$year_sel.rb,]$cen_lat, 
                  #popup = "popup_foo", 
