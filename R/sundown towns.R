@@ -15,6 +15,9 @@ library(sf)
 
 rm(list=ls());cat('\f')
 
+tidycensus::get_decennial(geography = "county", 
+                          state = "NC", 
+                          year = 1990)
 
 expelled.places <- tigris::places( cb = T) 
 expelled.counties <- tigris::counties(cb = T) 
@@ -22,11 +25,18 @@ expelled.counties <- tigris::counties(cb = T)
 expelled.counties <- expelled.counties[paste(expelled.counties$NAME, 
                         expelled.counties$STUSPS, sep = ", ") %in% 
                     c("Comanche, TX", "Greene, IN", 
-                      "Marshall, KY", "Forsyth, GA"),] 
+                      "Marshall, KY", "Forsyth, GA", 
+                      "Lincoln, NE", "Marion, OH", 
+                      "Humphreys, TN", "Scott, TN", 
+                      "Vermillion, IN", "Boone, AR"),]  %>%
+  mutate(., 
+         desc = "Place that once expelled entire Black population")
 
 expelled.places <- expelled.places[paste(expelled.places$NAME, 
                       expelled.places$STUSPS, sep = ", ") %in% 
                   c("Portsmouth, OH", 
+                    "Birmingham, KY", 
+                    "Blanford, IN",
                     "Wyandotte, MI", "Pollock, LA", 
                     "Colfax, LA",
                     "Celina, TN", 
@@ -57,7 +67,11 @@ expelled.places <- expelled.places[paste(expelled.places$NAME,
                     "Blanford, IN", 
                     "Manhattan Beach, CA", 
                     "Vienna, IL", 
-                    "Sheridan, AR"),]
+                    "Sheridan, AR", 
+                    "Garrett, Ky", 
+                    "Dothan, AL"),]  %>%
+  mutate(., 
+         desc = factor("Place that once expelled entire Black population"))
 
 ggplot() + 
   geom_sf(data = expelled.counties) +
@@ -82,11 +96,52 @@ for(i in 1:length(expelled.counties$geometry)){
 out.df
 library(data.table)
 
+
+# palc <- colorFactor(palette = "viridis", 
+#                    domain = expelled.counties$desc)
+
+# colorFactor(
+#   palette,
+#   domain,
+#   levels = NULL,
+#   ordered = FALSE,
+#   na.color = "#808080",
+#   alpha = FALSE,
+#   reverse = FALSE
+# )
+
+
 leaflet::leaflet() %>%
   addProviderTiles(
     "OpenStreetMap",
     # give the layer a name
     group = "OpenStreetMap"
   ) %>%
-  addPolygons(data = expelled.counties) %>%
-  addPolygons(data = expelled.places)
+  addPolygons(data = expelled.counties, 
+              stroke = T,
+              fillColor = "blue", 
+              fillOpacity = 0.2,
+              opacity = 1,
+              color = "blue",
+              weight = 2, 
+              popup = paste(expelled.counties$NAME, " County, ",
+                            expelled.counties$STATE_NAME, 
+                            sep = "")) %>%
+  addPolygons(data = expelled.places, 
+              stroke = T,
+              fillColor = "blue", 
+              fillOpacity = 0.2,
+              opacity = 1,
+              color = "blue",
+              weight = 2, 
+              popup = paste(expelled.places$NAME, 
+                            expelled.places$STATE_NAME, 
+                            sep = ", ")) %>%
+  addLegend(position = "bottomright",
+            title = "Legend",
+            #pal = palc, 
+            #colors = "magma", 
+            colors = "#03F",
+            opacity = 1,
+            labels = "Place that once expelled<br>
+            entire Black population")
