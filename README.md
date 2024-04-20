@@ -10,6 +10,7 @@ To process the street addresses listed in select editions of the mid-20th Centur
 https://tim-bender.shinyapps.io/shiny_remaining_greenbook_addresses/
 
 # Sources
+* https://www.statesman.com/story/news/2016/10/14/leave-or-die-americas-hidden-history-of-racial-expulsions/9957542007/
 * https://en.wikipedia.org/wiki/Bruce%27s_Beach
 * https://justice.tougaloo.edu/sundown-towns/using-the-sundown-towns-database/state-map/
 * https://thc.texas.gov/learn/historic-resources-survey/african-american-travel-guide-survey-project
