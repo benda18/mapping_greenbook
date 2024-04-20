@@ -16,6 +16,260 @@ library(readr)
 
 rm(list=ls());cat('\f')
 
+jus.wv <- read_lines("Arthurdale
+Belington
+Chester
+Davy
+Eleanor
+Follansbee
+Kenova
+Keystone
+Lincoln County
+Marlinton
+Marmet
+McMechen
+Milton
+New Martinsville
+Nitro
+Oak Hill
+Shannondale
+St. Marys
+")%>% paste(., ", West Virginia", sep = "")
+
+jus.va <- read_lines("Buchanan County
+Chincoteague
+Clintwood
+Colonial Heights
+Elkton
+Falls Church
+Fieldale
+Grundy
+Narrows
+Poquoson
+Richlands
+Weber City
+Wise
+")%>% paste(., ", Virginia", sep = "")
+
+jus.pa <- read_lines("Adams
+Albany
+Allegheny
+Alsace
+Amity
+Archbald
+Ashland
+Bellwood
+Boyertown
+Bradford
+Camp Hill
+Canadensis
+Clymer
+Coatesville
+Conestoga
+Corry
+Elizabethtown
+Everett
+Folcroft
+Glendale
+Hanover
+Hatboro
+Hazleton
+Hershey
+Irwin
+Jim Thorpe
+Johnston
+Johnstown
+Lansford
+Levittown
+Linglestown
+Locust Gap
+Manheim
+Mechanicsburg
+Millvale
+Mount Lebanon
+Nazareth
+Nesquehoning
+New Bethlehem
+New Holland
+Punxsutawney
+Royersford
+Selingsgrove
+Shenandoah
+Stoneboro
+Susquehanna
+Warren
+Waterford
+York County
+")%>% paste(., ", Pennsylvania", sep = "")
+
+jus.md <- read_lines("Brentwood
+Calvert County
+Chevy Chase
+Crofton
+Friendsville
+Garrett County
+Greenbelt
+Lonaconing
+Mayo
+Mount Rainier
+Oakland
+Princess Anne
+Savage
+Scientists Cliff
+Smith Island
+Tilghman Island
+University Park
+Washington Grove
+Westernport
+Woodland Beach
+")%>% paste(., ", Maryland", sep = "")
+
+jus.oh <- read_lines("Ada
+Alger
+Amherst
+Ansonia
+Antwerp
+Arcanum
+Ashville
+Avon
+Avon Lake
+Bay Village
+Beavercreek
+Bedford
+Bellevue
+Bethel
+Beverly
+Blanchester
+Bluffton
+Bridgetown
+Broadview Heights
+Brooklyn
+Brookville
+Brunswick
+Bryan
+Caldwell
+Canfield
+Carey
+Carrollton
+Celina
+Chagrin Falls
+Chardon
+Chesapeake
+Cheviot
+Chippewa Township
+Clyde
+Coal Grove
+Coldwater
+Columbiana
+Corning
+Covedale CDP
+Covedale
+Cridersville
+Crooksville
+Cuyahoga Falls
+Deer Park
+Defiance
+Delphos
+Eastlake
+Enon
+Fairborn
+Fairview
+Findlay
+Fort Recovery
+Galion
+Garrettsville
+Germantown
+Gibsonburg
+Greenhills
+Grove City
+Harrison
+Hicksville
+Hubbard
+Hudson
+Huron
+Independence
+Jefferson
+Johnstown
+Kettering
+Lakemore
+Lakewood
+Lodi
+Loudonville
+Louisville
+Lynchburg
+Lyndhurst
+Mariemont
+Marion
+Mayfield
+Mayfield Heights
+McDonald
+Miamisburg
+Middletown
+Millersburg
+Minerva
+Mogadore
+Montpelier
+Mount Gilead
+Mount Sterling
+Napoleon
+Neffs
+New Boston
+New Lexington
+Newburgh Heights
+Newton Falls
+Niles
+North Baltimore
+North Olmsted
+Norwood
+Oak Harbor
+Oakwood
+Ottawa
+Ottawa Hills
+Parma
+Parma Heights
+Poland
+Reading
+Reynoldsburg
+Rittman
+Rocky River
+Seven Hills
+Shadyside
+Shawnee
+Sheffield Lake
+Shelby
+Silver Lake
+Solon
+South Amherst
+South Lebanon
+St. Bernard
+St. Marys
+Stow
+Strasburg
+Strongsville
+Sylvania
+Syracuse
+Tallmadge
+Tipp City
+Trenton
+University Heights
+Upper Arlington
+Upper Sandusky
+Utica
+Vermilion
+Wapakoneta
+Warrensville Heights
+Wauseon
+Waverly
+West Liberty
+West Milton
+West Portsmouth
+Westlake
+Wheelersburg
+Williamsburg
+Willoughby
+Willowick
+Woodsfield
+")  %>% paste(., ", Ohio", sep = "")
 
 jus.in <- read_lines("Advance
 Albany
@@ -733,6 +987,359 @@ Trent Woods
 Wrightsville Beach") %>%
   paste(., ", North Carolina", sep = "")
 
+jus.il <- read_lines("
+Addison
+Albers
+Albion
+Altamont
+Alto Pass
+Anna
+Arcola
+Arenzville
+Arlington Heights
+Arthur
+Ashland
+Ashley
+Assumption
+Athens
+Atwood
+Auburn
+Ava
+Aviston
+Balcom
+Barrington
+Bartelso
+Bartlett
+Bartonville
+Beardstown
+Beaucoup
+Beckemeyer
+Beecher
+Belknap
+Bellwood
+Bensenville
+Benton
+Berryville
+Berwyn
+Bethany
+Bloomingdale
+Blue Mound
+Bluford
+Bolingbrook
+Braidwood
+Breese
+Bridgeport
+Brookfield
+Brown County
+Brownstown
+Buckley
+Buckner
+Buffalo
+Bunker Hill
+Bureau
+Burr Ridge
+Calhoun
+Calhoun County
+Campbell Hill
+Cantrall
+Carlinville
+Carlyle
+Carmi
+Carterville
+Carthage
+Cary
+Casey
+Catlin
+Cave-in-Rock
+Cherry
+Chester
+Chillicothe
+Christopher
+Cicero
+Clarendon Hills
+Clinton County
+Cloverdale
+Coal City
+Colchester
+Columbia
+Crainville
+Crete
+Creve Coeur
+Crossville
+Crystal Lake
+Cuba
+Danvers
+Darien
+Dawson
+De Land
+Deerfield
+DeKalb
+DeLand
+Des Plaines
+Divernon
+Dongola
+Downers Grove
+DuPage County
+Dupo
+Dwight
+Earlville
+East Alton
+Effingham
+El Paso
+Elco
+Eldorado
+Elk Grove Village
+Elmhurst
+Elmwood
+Elmwood Park
+Elsah
+Enfield
+Eola
+Equality
+Evansville
+Evergreen Park
+Fairfield
+Farmer City
+Fisher
+Flora
+Flowerfield
+Forest Park
+Fox Valley
+Franklin Park
+Freeburg
+Fulton
+Germantown
+Gillespie
+Girard
+Glen Carbon
+Glen Ellyn
+Glendale Heights
+Golconda
+Goreville
+Granite City
+Grant Park
+Grayville
+Greenfield
+Greenup
+Greenview
+Hardin
+Harvard
+Havana
+Hazel Dell
+Henry
+Herrin
+Herscher
+Highland
+Highland Park
+Hinsdale
+Homer
+Hoyleton
+Irvington
+Itasca
+Iuka
+Ivesdale
+Jasper County
+Jewett
+Johnston City
+Jonesboro
+Justice
+Kane County
+Kaolin
+Karnak
+Keeneyville
+Kenilworth
+Kenney
+Kinmundy
+La Moille
+Lacon
+Lamb
+LaSalle Peru
+Le Roy
+Leland Grove
+Lemont
+Lewistown
+Lexington
+Libertyville
+Lisle
+Lombard
+Lovington
+Lyons
+Madison
+Mahomet
+Manhattan
+Mansfield
+Manteno
+Marissa
+Maroa
+Marquette Heights
+Marseilles
+Marshall
+Martinsville
+Maryville
+Mascoutah
+Mazon
+McClure
+McHenry County
+McLeansboro
+Medinah
+Melrose Park
+Meredosia
+Metamora
+Minonk
+Monroe County
+Monticello
+Montrose
+Morris
+Morrison
+Morton
+Mounds city
+Mount Olive
+Mount Prospect
+Moweaqua
+Mt. Carmel
+Mt. Sterling
+Mt. Zion
+Mulkeytown
+Mundelein
+Naperville
+Nashville
+Neoga
+New Baden
+New Boston
+New Lenox
+New Minden
+Newman
+Niantic
+Niles
+Nokomis
+Norris City
+O’Fallon
+Oak Brook
+Oak Lawn
+Oak Park
+Oakawville
+Oakbrook Terrace
+Oakland
+Oblong
+Okawville
+Olney
+Omaha
+Onarga
+Oreana
+Orient
+Orland Park
+Palestine
+Pana
+Panama
+Park Ridge
+Patoka
+Pawnee
+Paxton
+Pekin
+Peotone
+Philo
+Piatt County
+Pierron
+Pinckneyville
+Plainfield
+Pocahontas
+Posey
+Potomac
+Princeton
+Ramsey
+Rantoul
+Red Bud
+Richview
+Ridge Farm
+Ridgway
+Riverside
+Roanoke
+Robinson
+Rochester
+Romeoville
+Roselle
+Roseville
+Rosiclare
+Roxana
+Royalton
+Salem
+San Jose
+Sandoval
+Sandwich
+Saybrook
+Schaumburg
+Sesser
+Shelbyville
+Sherman
+Sidell
+Sidney
+South Pekin
+Spaulding
+St. Anne
+St. Elmo
+St. Jacob
+St. Joseph
+St. Rose
+Staunton
+Steeleville
+Stronghurst
+Sullivan
+Tamaroa
+Teutopolis
+Thayer
+Thebes
+Toledo
+Tolono
+Toluca
+Towanda
+Trenton
+Tuscola
+Union County
+Valier
+Vandalia
+Vergennes
+Vienna
+Villa Grove
+Villa Park
+Virden
+Warrensburg
+Warrenville
+Warsaw
+Washington
+Waterloo
+Wayne
+Wayne City
+West Chicago
+West City
+West Frankfort
+West Salem
+Western Springs
+Westfield
+Westmont
+Weston
+Westville
+Wheaton
+White Hall
+White Heath
+Williamsville
+Willowbrook
+Wilmette
+Windsor
+Winfield
+Winnebago
+Winthrop Harbor
+Witt
+Wolf Lake
+Wolflake
+Wood Dale
+Wood River
+Woodridge
+Worden
+Wyanet
+Zeigler
+") %>%
+  paste(., ", Illinois", sep = "")
+
 
 sundown.co <- tigris::counties(cb = T) %>%
   mutate(., 
@@ -755,7 +1362,11 @@ sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ",
                jus.ok, 
                jus.tx, 
                jus.in, 
-               jus.ms, jus.la),]
+               jus.ms, 
+               jus.la,
+               jus.oh, 
+               jus.wv, jus.va, jus.pa, jus.md,
+               jus.il),]
 sundown.pl <- sundown.pl[paste(sundown.pl$NAME, ", ", 
                                sundown.pl$STATE_NAME, sep = "") %in% 
                            c(jus.nc, 
@@ -770,7 +1381,10 @@ sundown.pl <- sundown.pl[paste(sundown.pl$NAME, ", ",
                              jus.tx, 
                              jus.in, 
                              jus.ms, 
-                             jus.la),]
+                             jus.la, 
+                             jus.oh, 
+                             jus.wv, jus.va, jus.pa, jus.md, 
+                             jus.il),]
 
 
 expelled.places <- tigris::places( cb = T) 
