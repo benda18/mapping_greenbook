@@ -16,6 +16,382 @@ library(readr)
 
 rm(list=ls());cat('\f')
 
+jus.ar <- read_lines("Alix
+Altus
+Amity
+Ash Flat
+Bauxite
+Baxter County
+Black Rock
+Bonanza
+Booneville
+Bradford
+Brookland
+Cabot
+Calico Rock
+Cammack Village
+Clay County
+Cleburne County
+Cotter
+Crawford County
+Decatur
+Delight
+Desha
+Diamond City
+Dierks
+Dover
+Dyer
+Dyess
+Elkins
+Elm Springs
+Etowah
+Eureka Springs
+Evening Shade
+Fairfield Bay
+Fouke
+Gentry
+Glenwood
+Goshen
+Grannis
+Gravette
+Greenway
+Greenwood
+Greers Ferry
+Grubbs
+Hardy
+Harrison
+Hillcrest
+Imboden
+Johnson
+Kibler
+Lacrosse
+Lamar
+Lavaca
+Leachville
+Leslie
+Little Flock
+London
+Magazine
+Magnet Cove
+Manila
+Marion County
+Marshall
+Mena
+Mount Ida
+Mountain Home
+Mountain View
+Mt. Ida
+Mulberry
+Newton County
+Oak Grove Heights
+Oakland
+Oppelo
+Oxford
+Ozark
+Pangburn
+Paragould
+Perryville
+Piggott
+Portia
+Pottsville
+Provo
+Quitman
+Rogers
+Scott County
+Sheridan
+Siloam Springs
+Springdale
+St. Francis
+Stone County
+Subiaco
+Sulphur Springs
+Taylor
+Van Buren
+Waldron
+Wickes
+Williford
+")  %>% paste(., ", Arkansas", sep = "")
+jus.ok <- read_lines("Allen
+Alva
+Apache
+Arkoma
+Barnsdall
+Bixby
+Blackwell
+Blair
+Boise City
+Broken Arrow
+Caddo
+Carnegie
+Cherokee
+Cleveland
+Collinsville
+Colony
+Comanche
+Commerce
+Durant
+Edmond
+Erick
+Fox
+General
+Gore
+Greer County
+Grove
+Haileyville
+Healdton
+Henryetta
+Hinton
+Hooker
+Jenks
+Lawton
+Lexington
+Lindsay
+Madill
+Marlow
+Marshall
+Medford
+Moore
+Morris
+Noble
+Norman
+Okeene
+Okemah
+Ottawa County
+Paden
+Picher
+Purcell
+Sapulpa
+Skiatook
+Stilwell
+Stroud
+Taft
+Tecumseh
+Tioga
+Walters
+Welch
+")  %>% paste(., ", Oklahoma", sep = "")
+jus.tx <- read_lines("Alamo
+Alba
+Archer City
+Armstrong County
+Aubrey
+Benavides
+Bevil Oaks
+Big Spring
+Boerne
+Bowie
+Briscoe County
+Brownsville
+Canadian
+Canyon
+Carson County
+Castro County
+Childress County
+Collingsworth County
+Comanche
+Comanche County
+Copperas Cove
+Cotulla
+Cumby
+Cut and Shoot
+Dalhart
+Dallam County
+De Leon
+Deaf Smith
+Deaf Smith County
+Donley County
+Donna
+Dumas
+Edcouch
+Evadale
+Everman
+Fremont
+Glen Rose
+Goldthwaite
+Grand Saline
+Gray County
+Hall County
+Hamilton
+Hamilton County
+Hansford County
+Hartley County
+Hemphill County
+Hereford
+Hico
+Highland Park
+Highlands
+Hillcrest
+Holliday
+Hutchinson County
+Iowa Park
+Irving
+Jacinto City
+Killeen
+Kirvin
+Lake Jackson
+Lakeview
+Lipscomb County
+Lumberton
+Montague County
+Moore County
+Moulton
+Nederland
+Nocona
+Oak Knoll
+Ochiltree County
+Oldham County
+Orange
+Paradise
+Parmer County
+Pasadena
+Perryton
+Perryton
+Pharr
+Phillips
+Pinewood Estates
+Port Neches
+Porter Heights
+Potter County
+Randall County
+Rio Grande City
+River Oaks
+Robert Lee
+Roberts County
+San Diego
+San Juan
+Santa Fe
+Scurry County
+Shamrock
+Sherman County
+Slocum
+Spearman
+Stinnett
+Sunnyvale
+Swisher County
+Throckmorton
+Throckmorton County
+Tioga
+Vidor
+West Orange
+Wheeler County
+White Deer
+White Settlement
+Whitesboro
+Winnie
+")  %>% paste(., ", Texas", sep = "")
+jus.tn <- read_lines("Baxter
+Celina
+Cookeville
+Copperhill
+Crossville
+Ducktown
+Dunlap
+East Ridge
+Englewood
+Erwin
+Fairview
+Gatlinburg
+General
+Greenbrier
+Jamestown
+Lafayette
+Lenoir City
+Monterey
+Norris
+North Chattanooga
+Oneida
+Palmer
+Signal Mountain
+Soddy-Daisy
+Teste
+Tracy City
+Waynesboro
+")  %>% paste(., ", Tennessee", sep = "")
+jus.ky <- read_lines("Albany
+Alexandria
+Audubon Park
+Beechwood Village
+Bellevue
+Benton
+Brodhead
+Bromley
+Burnside
+Calvert City
+Caneyville
+Catlettsburg
+Centertown
+Clay
+Cold Spring
+Corbin
+Dayton
+Edgewood
+Elkhorn City
+Erlanger
+Florence
+Fort Mitchell
+Fort Thomas
+Highland Heights
+Irvine
+Jeffersonville
+Liberty
+Livermore
+London
+Loyall
+Ludlow
+Lynnview
+Marshall County
+Martin
+Meadow Vale
+Minor Lane Heights
+Mount Vernon
+Mount Washington
+North Corbin
+Olive Hill
+Paintsville
+Park Hills
+Parkway Village
+Petersburg
+Pompeii
+Prestonsburg
+Raceland
+Russell
+Russell Springs
+Salyersville
+Shively
+Silver Grove
+Southgate
+St. Regis Park
+Stanton
+Van Lear
+Vanceburg
+Whitesburg
+Williamstown
+Windy Hills
+Worthington
+")  %>% paste(., ", Kentucky", sep = "")
+
+jus.ms <- read_lines("Baxterville
+Belmont
+Burnsville
+Clinton
+d’Iberville
+General
+It
+Mize
+Pearl
+Southaven
+") %>% paste(., ", Mississippi", sep = "")
+
+jus.la <- read_lines("Anacoco
+Golden Meadow
+Grand Isle
+Jean Lafitte
+Krotz Springs
+Pitkin
+Pollock
+Simpson
+") %>% paste(., ", Louisiana", sep = "")
+
 jus.al <- read_lines("Arab
 Chickasaw
 Cullman
@@ -32,7 +408,7 @@ Sand Mountain
 Vestavia Hills
 West Point
 Winston County
-")%>% paste(., ", Alabama", sep = "")
+") %>% paste(., ", Alabama", sep = "")
 
 jus.fl <- read_lines("Altha
 Cedar Key
@@ -124,14 +500,24 @@ sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ",
                jus.sc, 
                jus.al, 
                jus.fl, 
-               jus.ga),]
+               jus.ga, 
+               jus.ar, 
+               jus.tn, 
+               jus.ky, 
+               jus.ok, 
+               jus.tx),]
 sundown.pl <- sundown.pl[paste(sundown.pl$NAME, ", ", 
                                sundown.pl$STATE_NAME, sep = "") %in% 
                            c(jus.nc, 
                              jus.sc, 
                              jus.al, 
                              jus.fl, 
-                             jus.ga),]
+                             jus.ga, 
+                             jus.ar, 
+                             jus.tn, 
+                             jus.ky, 
+                             jus.ok, 
+                             jus.tx),]
 
 
 expelled.places <- tigris::places( cb = T) 
