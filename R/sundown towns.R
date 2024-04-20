@@ -145,3 +145,7 @@ leaflet::leaflet() %>%
             opacity = 1,
             labels = "Place that once expelled<br>
             entire Black population")
+
+
+saveRDS(expelled.counties, "shiny_remaining_greenbook_addresses/exp_co.rds")
+saveRDS(expelled.places, "shiny_remaining_greenbook_addresses/exp_pl.rds")
