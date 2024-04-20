@@ -15,6 +15,18 @@ library(sf)
 
 rm(list=ls());cat('\f')
 
+
+greenwood.tulsa.ok <- county_subdivisions(state = "OK",  
+                                          cb = T)
+grep(pattern = "Greenwood", x = greenwood.tulsa.ok$NAME, 
+     value = T)
+
+pl.ok <- tigris::places(state = "OK", cb = T)
+
+grep(pattern = "Greenwood", x = pl.ok$NAME, 
+     value = T)
+
+
 tidycensus::get_decennial(geography = "county", 
                           state = "NC", 
                           year = 1990)
@@ -28,7 +40,7 @@ expelled.counties <- expelled.counties[paste(expelled.counties$NAME,
                       "Marshall, KY", "Forsyth, GA", 
                       "Lincoln, NE", "Marion, OH", 
                       "Humphreys, TN", "Scott, TN", 
-                      "Vermillion, IN", "Boone, AR"),]  %>%
+                      "Vermillion, IN", "Boone, AR", "DeKalb, GA"),]  %>%
   mutate(., 
          desc = "Place that once expelled entire Black population")
 
