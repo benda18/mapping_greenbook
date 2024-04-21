@@ -1787,10 +1787,149 @@ Toledo
 ") %>% paste(., ", Oregon", sep = "")}
 
 
-jus.id <- NA %>% read_lines() %>% paste(., ", Idaho", sep = "")
-jus.mt <- NA %>% read_lines() %>% paste(., ", Montana", sep = "")
-jus.wy <- NA %>% read_lines() %>% paste(., ", Wyoming", sep = "")
-jus.ne <- NA %>% read_lines() %>% paste(., ", Nebraska", sep = "")
+jus.id <- read_lines("Ashton
+Bonners Ferry
+Clark Fork
+General
+Hoodoo
+Moscow
+Twin Falls
+Wallace
+") %>% paste(., ", Idaho", sep = "")
+jus.mt <- read_lines("
+Carbon County
+Choteau
+General
+Glendive
+Lincoln County
+Miles City
+Roundup
+") %>% paste(., ", Montana", sep = "")
+jus.wy <- read_lines("
+Green River
+Laramie
+Powell
+Rock Springs
+") %>% paste(., ", Wyoming", sep = "")
+jus.ne <- read_lines("
+Adams County
+Antelope County
+Arthur County
+Auburn
+Aurora
+Banner County
+Blaine County
+Boone County
+Box Butte
+Boyd County
+Broken Bow
+Brown County
+Buffalo County
+Burt County
+Butler County
+Cass County
+Cedar County
+Central City
+Chase County
+Cherry County
+Cheyenne County
+Clay County
+Colfax County
+Cozad
+Crete
+Cuming County
+David City
+Dawes County
+Dawson County
+Deuel County
+Dixon County
+Dodge County
+Douglas County
+Dundy County
+Fairbury
+Fillmore County
+Franklin County
+Fremont
+Frontier County
+Furnas County
+Gage County
+Garden County
+Garfield County
+Gering
+Gosper County
+Grant County
+Greeley County
+Hall County
+Hamilton County
+Harlan County
+Harrison
+Hayes County
+Hitchcock County
+Holdredge
+Holt County
+Hooker County
+Howard County
+Jackson
+Johnson County
+Kearney County
+Keith County
+Keya Paha County
+Kimball County
+Knox County
+Lancaster County
+Lexington
+Lincoln
+Lincoln County
+Logan County
+Loup County
+Madison County
+McPherson County
+Merrick County
+Minden
+Morrill County
+Nance County
+Nebraska City
+Nemaha County
+North Platte
+Nuckolls County
+ONeill
+Otoe County
+Pawnee County
+Perkins County
+Phelps County
+Pierce County
+Plainview
+Platte County
+Plattsmouth
+Polk County
+Red Willow County
+Richardson County
+Rock County
+Saline County
+Sarpy County
+Saunders County
+Schuyler
+Scotts Bluff
+Seward County
+Sheridan County
+Sherman County
+Sidney
+Sioux County
+Stanton County
+Tecumseh
+Thayer County
+Thomas County
+Valentine
+Valley County
+Wahoo
+Wayne County
+Webster County
+West Point
+Wheeler County
+Wymore
+Wynot
+York County
+") %>% paste(., ", Nebraska", sep = "")
 
 jus.nd <- NA %>% read_lines() %>% paste(., ", North Dakota", sep = "")
 jus.sd <- NA %>% read_lines() %>% paste(., ", South Dakota", sep = "")
@@ -1825,6 +1964,7 @@ ls(pattern = "jus")
 sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ", 
                  sundown.co$STATE_NAME, sep = "") %in% 
              c(jus.nc, 
+               jus.id, jus.mt, jus.ne, jus.wy,
                jus.nv, jus.ca, jus.wa, jus.or,
                jus.sc, 
                jus.al, 
@@ -1845,6 +1985,7 @@ sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ",
 sundown.pl <- sundown.pl[paste(sundown.pl$NAME, ", ", 
                                sundown.pl$STATE_NAME, sep = "") %in% 
                            c(jus.nc,  
+                             jus.id, jus.mt, jus.ne, jus.wy,
                              jus.nv, jus.ca, jus.wa, jus.or,
                              jus.sc, 
                              jus.al, 
