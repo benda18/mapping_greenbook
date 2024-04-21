@@ -1340,6 +1340,243 @@ Zeigler
 ") %>%
   paste(., ", Illinois", sep = "")
 
+jus.mo <- read_lines("Adrian
+Albany
+Anderson
+Aurora
+Ava
+Bella Villa
+Belle
+Bernie
+Bethany
+Bismarck
+Bloomfield
+Blue Springs
+Bolivar
+Branson
+Buckner
+Buffalo
+Cabool
+Camdenton
+Campbell
+Carl Junction
+Carterville
+Cassville
+Chaffee
+Claycomo
+Cole Camp
+Concordia
+Crane
+Creve Coeur
+Cuba
+Deepwater
+Desloge
+Dexter
+Dixon
+Doniphan
+East Prairie
+Edina
+El Dorado Springs
+Eldon
+Ellington
+Elvins
+Flat River
+Galena
+Gideon
+Granby
+Grant City
+Hamilton
+Hermann
+Holt
+Houston
+Kahoka
+Kearney
+King City
+La Plata
+Lake Lotawana
+Lamar
+Leadwood
+Liberal
+Linn
+Marionville
+Marshfield
+Maryville
+Memphis
+Milan
+Mindenmines
+Monett
+Morehouse
+Mound City
+Mountain Grove
+Mt. Vernon
+North Kansas City
+Oran
+Owensville
+Pattonsburg
+Perryville
+Piedmont
+Pierce City
+Princeton
+Richland
+Rockport
+Salem
+Sarcoxie
+Savannah
+Senath
+Seneca
+Seymour
+Shrewsbury
+Smithville
+St. Clair
+St. Genevieve
+St. George
+St. James
+Stanberry
+Steelville
+Stockton
+Sugar Creek
+Sullivan
+Thayer
+Unionville
+Warsaw
+Webb City
+Willow Springs
+") %>% paste(., ", Missouri", sep = "")
+
+jus.ks  <- read_lines("Altamont
+Anthony
+Arma
+Ashland
+Atwood
+Augusta
+Barber County
+Belle Plaine
+Belleville
+Beloit
+Blue Rapids
+Burlingame
+Burlington
+Butler County
+Caney
+Cedar Vale
+Chapman
+Chase County
+Cheney
+Cheyenne County
+Cimarron
+Clark County
+Clearwater
+Cloud County
+Clyde
+Coffey County
+Colby
+Coldwater
+Comanche County
+Conway Springs
+De Soto
+Decatur County
+Denton
+Derby
+Dickinson County
+Dighton
+Douglass
+Edwards County
+Elk County
+Elkhart
+Ellinwood
+Ellis County
+Ellsworth County
+Enterprise
+Erie
+Eureka
+Finney County
+Ford County
+Frontenac
+Gove County
+Gray County
+Greeley County
+Greensburg
+Greenwood County
+Halstead
+Hamilton County
+Harper
+Haskell County
+Hays
+Haysville
+Herington
+Hillsboro
+Hodgeman County
+Hoisington
+Howard
+Hoxie
+Jewell county
+Kearney County
+Kiowa
+Kiowa County
+La Crosse
+Lakin
+Lane County
+Leoti
+Lincoln Center
+Lincoln County
+Lindsborg
+Logan County
+Madison
+Mankato
+Marion
+Marysville
+McPherson County
+Meade
+Mitchell County
+Morton County
+Moundridge
+Mulvane
+Neodesha
+Ness City
+Ness County
+Nickerson
+Norton
+Oberlin
+Osage City
+Osborne County
+Ottawa County
+Pawnee County
+Phillips County
+Pratt County
+Rawlins County
+Republic County
+Rice County
+Rooks County
+Rush County
+Russell
+Scammon
+Scott City
+Seneca
+Seward County
+Sheridan County
+Sherman County
+Smith Center
+Solomon
+St. Francis
+Stafford
+Stanton County
+Stevens County
+Sublette
+Sumner County
+Thomas County
+Towanda
+Trego County
+Tribune
+Ulysses
+Victoria
+Wallace County
+Washington
+White City
+Wichita County
+Wilson
+Woodson County
+Yates Center
+") %>% paste(., ", Kansas", sep = "")
 
 sundown.co <- tigris::counties(cb = T) %>%
   mutate(., 
@@ -1366,7 +1603,7 @@ sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ",
                jus.la,
                jus.oh, 
                jus.wv, jus.va, jus.pa, jus.md,
-               jus.il),]
+               jus.il, jus.mo, jus.ks),]
 sundown.pl <- sundown.pl[paste(sundown.pl$NAME, ", ", 
                                sundown.pl$STATE_NAME, sep = "") %in% 
                            c(jus.nc, 
@@ -1384,7 +1621,7 @@ sundown.pl <- sundown.pl[paste(sundown.pl$NAME, ", ",
                              jus.la, 
                              jus.oh, 
                              jus.wv, jus.va, jus.pa, jus.md, 
-                             jus.il),]
+                             jus.il, jus.mo, jus.ks),]
 
 
 expelled.places <- tigris::places( cb = T) 
