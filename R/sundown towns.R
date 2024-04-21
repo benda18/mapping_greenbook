@@ -16,7 +16,7 @@ library(readr)
 
 rm(list=ls());cat('\f')
 
-jus.wv <- read_lines("Arthurdale
+{jus.wv <- read_lines("Arthurdale
 Belington
 Chester
 Davy
@@ -1784,8 +1784,35 @@ Springfield
 The Dalles
 Tillamook
 Toledo
-") %>% paste(., ", Oregon", sep = "")
+") %>% paste(., ", Oregon", sep = "")}
 
+
+jus.id <- NA %>% read_lines() %>% paste(., ", Idaho", sep = "")
+jus.mt <- NA %>% read_lines() %>% paste(., ", Montana", sep = "")
+jus.wy <- NA %>% read_lines() %>% paste(., ", Wyoming", sep = "")
+jus.ne <- NA %>% read_lines() %>% paste(., ", Nebraska", sep = "")
+
+jus.nd <- NA %>% read_lines() %>% paste(., ", North Dakota", sep = "")
+jus.sd <- NA %>% read_lines() %>% paste(., ", South Dakota", sep = "")
+jus.mn <- NA %>% read_lines() %>% paste(., ", Minnesota", sep = "")
+jus.ia <- NA %>% read_lines() %>% paste(., ", Iowa", sep = "")
+
+jus.wi <- NA %>% read_lines() %>% paste(., ", Wisconsin", sep = "")
+jus.mi <- NA %>% read_lines() %>% paste(., ", Michigan", sep = "")
+jus.ny <- NA %>% read_lines() %>% paste(., ", New York", sep = "")
+jus.de <- NA %>% read_lines() %>% paste(., ", Delaware", sep = "")
+
+jus.ct <- NA %>% read_lines() %>% paste(., ", Connecticut", sep = "")
+jus.ri <- NA %>% read_lines() %>% paste(., ", Rhode Island", sep = "")
+jus.ma <- NA %>% read_lines() %>% paste(., ", Massachusetts", sep = "")
+jus.vt <- NA %>% read_lines() %>% paste(., ", Vermont", sep = "")
+
+jus.nh <- NA %>% read_lines() %>% paste(., ", New Hampshire", sep = "")
+jus.me <- NA %>% read_lines() %>% paste(., ", Maine", sep = "")
+jus.hi <- NA %>% read_lines() %>% paste(., ", Hawaii", sep = "")
+jus.ak <- NA %>% read_lines() %>% paste(., ", Alaska", sep = "")
+
+jus.nj <- NA %>% read_lines() %>% paste(., ", New Jersey", sep = "")
 
 sundown.co <- tigris::counties(cb = T) %>%
   mutate(., 
