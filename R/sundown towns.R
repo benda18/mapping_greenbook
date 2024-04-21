@@ -2018,7 +2018,7 @@ Villisca
 Vinton
 Waukon
 Winterset
-" %>% read_lines() %>% paste(., ", Iowa", sep = "")}
+" %>% read_lines() %>% paste(., ", Iowa", sep = "")
 
 jus.wi <- "Abbotsford
 Adams
@@ -2271,10 +2271,143 @@ Wisconsin Dells
 Wisconsin Rapids
 " %>% read_lines() %>% 
   gsub("\\(.*\\)$", "", .) %>%
-  paste(., ", Wisconsin", sep = "") 
-jus.mi <- NA %>% read_lines() %>% paste(., ", Michigan", sep = "")
-jus.ny <- NA %>% read_lines() %>% paste(., ", New York", sep = "")
-jus.de <- NA %>% read_lines() %>% paste(., ", Delaware", sep = "")
+  paste(., ", Wisconsin", sep = "") }
+jus.mi <- "Algonac
+Allen Park
+Alpena
+Bad Axe
+Bessemer
+Big Star Lake
+Birmingham
+Brighton
+Brown City
+Cadillac
+Caro
+Charlotte
+Climax
+Coopersville
+Dearborn
+Dearborn Heights
+East Grand Rapids
+East Lansing
+Ecorse *
+Fenton
+Flushing
+Fraser
+Fremont
+Galesburg
+General
+Grosse Pointe
+Grosse Pointe Farms
+Grosse Pointe Park
+Grosse Pointe Shores
+Grosse Pointe Woods
+Harbor Beach
+Hartford
+Holland
+Howell
+Hudson
+Ironwood
+Ishpeming
+Kalamazoo *
+Lathrup Village
+Lexington
+Linden
+Livonia
+Mancelona
+Manistique
+Marine City
+Marlette
+Marquette
+Marshall
+Marysville
+Mason
+Menominee
+Menominee County
+Munising
+New Baltimore
+Ontonagon
+Owosso
+Petoskey
+Pinckney
+Portage
+Portland
+Reese
+Richmond
+Rockford
+Rockwood
+Royal Oak
+Sebewaing
+South Lyon
+Southgate
+Spring Lake
+St. Clair
+St. Clair Shores
+St. Joseph *
+Sterling Heights
+Taylor
+Traverse City
+Trenton
+Troy
+Upper Peninsula
+Utica
+Vicksburg
+Warren
+Westland
+White Pigeon
+Wixom
+Wyandotte
+" %>% read_lines() %>% paste(., ", Michigan", sep = "")
+jus.ny <- "Amherst
+Attica
+Belle Terre
+Bennington
+Brighton
+Bronxville
+Chazy
+Cold Spring
+Cooperstown
+Copiague
+Cove Neck
+Delmar
+Elmont
+Floral Park
+Garden City
+Glen Head
+Green Island
+Hamburg
+Irondequoit
+Johnsburg
+Johnson City
+Levittown
+Mexico
+Miller Place
+North Tonawanda
+Nunda
+Oceanside
+Orchard Park
+Pelham Manor
+Penfield
+Pleasantville
+Roosevelt
+Roscoe
+Saratoga Springs
+Sayville
+Scarsdale
+Sea Cliff
+Seaford
+Smithtown
+Tonawanda
+Tuxedo Park
+Valley Stream
+Voorheesville
+West Elmira
+Westchester County
+Whitesboro
+Yaphank
+Yonkers
+" %>% read_lines() %>% paste(., ", New York", sep = "")
+jus.de <- "Rehoboth Beach" %>% read_lines() %>% paste(., ", Delaware", sep = "")
 
 jus.ct <- NA %>% read_lines() %>% paste(., ", Connecticut", sep = "")
 jus.ri <- NA %>% read_lines() %>% paste(., ", Rhode Island", sep = "")
@@ -2299,7 +2432,7 @@ ls(pattern = "jus")
 sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ", 
                  sundown.co$STATE_NAME, sep = "") %in% 
              c(jus.nc, 
-               jus.wi,
+               jus.wi, jus.mi, jus.ny,jus.de,
                jus.nd, jus.sd, jus.mn, jus.ia,
                jus.id, jus.mt, jus.ne, jus.wy,
                jus.nv, jus.ca, jus.wa, jus.or,
@@ -2322,7 +2455,7 @@ sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ",
 sundown.pl <- sundown.pl[paste(sundown.pl$NAME, ", ", 
                                sundown.pl$STATE_NAME, sep = "") %in% 
                            c(jus.nc,  
-                             jus.wi,
+                             jus.wi, jus.mi, jus.ny,jus.de,
                              jus.nd, jus.sd, jus.mn, jus.ia,
                              jus.id, jus.mt, jus.ne, jus.wy,
                              jus.nv, jus.ca, jus.wa, jus.or,
