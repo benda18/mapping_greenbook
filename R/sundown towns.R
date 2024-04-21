@@ -1784,7 +1784,7 @@ Springfield
 The Dalles
 Tillamook
 Toledo
-") %>% paste(., ", Oregon", sep = "")}
+") %>% paste(., ", Oregon", sep = "")
 
 
 jus.id <- read_lines("Ashton
@@ -1929,12 +1929,96 @@ Wheeler County
 Wymore
 Wynot
 York County
-") %>% paste(., ", Nebraska", sep = "")
+") %>% paste(., ", Nebraska", sep = "")}
 
-jus.nd <- NA %>% read_lines() %>% paste(., ", North Dakota", sep = "")
-jus.sd <- NA %>% read_lines() %>% paste(., ", South Dakota", sep = "")
-jus.mn <- NA %>% read_lines() %>% paste(., ", Minnesota", sep = "")
-jus.ia <- NA %>% read_lines() %>% paste(., ", Iowa", sep = "")
+jus.nd <- "Barnes County
+Emmons County
+Fargo
+General
+LaMoure County
+McLean County
+Pembina
+Rolette County
+Traill County
+" %>% read_lines() %>% paste(., ", North Dakota", sep = "")
+jus.sd <- "Belle Fourche
+Canton
+Delmont
+Doland
+Lead
+Spink County
+" %>% read_lines() %>% paste(., ", South Dakota", sep = "")
+jus.mn <- "Albert Lea
+Appleton
+Austin
+Biwabik
+Cannon Falls
+Coleraine
+Eagan
+Edina
+Fairmont
+Granite Falls
+Mankato
+Marshall
+New Brighton
+New Ulm
+Paynesville
+Pine Island
+Red Wing
+Redwood Falls
+South St. Paul
+St. Louis Park
+Stillwater
+Waseca
+Worthington
+" %>% read_lines() %>% paste(., ", Minnesota", sep = "")
+jus.ia <- "Adel
+Akron
+Algona
+Allison
+Alton
+Arnolds Park
+Audobon
+Avoca
+Bedford
+Belle Plaine
+Bellevue
+Belmond
+Bloomfield
+Blue Grass
+Bondurant
+Britt
+Brooklyn
+Cedar Falls
+Charles City
+Clarion
+Clear Lake
+Cresco
+Eagle Grove
+Emmetsburg
+General
+Harlan
+Jefferson
+Lambs Grove
+Lenox
+Malvern
+Manchester
+Manning
+Maquoketa
+New Market
+Osage
+Pacific Junction
+Pella
+Pleasant Hill
+Sioux Center
+Spirit Lake
+Tabor
+Taylor County
+Villisca
+Vinton
+Waukon
+Winterset
+" %>% read_lines() %>% paste(., ", Iowa", sep = "")
 
 jus.wi <- NA %>% read_lines() %>% paste(., ", Wisconsin", sep = "")
 jus.mi <- NA %>% read_lines() %>% paste(., ", Michigan", sep = "")
@@ -1964,6 +2048,7 @@ ls(pattern = "jus")
 sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ", 
                  sundown.co$STATE_NAME, sep = "") %in% 
              c(jus.nc, 
+               jus.nd, jus.sd, jus.mn, jus.ia,
                jus.id, jus.mt, jus.ne, jus.wy,
                jus.nv, jus.ca, jus.wa, jus.or,
                jus.sc, 
@@ -1985,6 +2070,7 @@ sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ",
 sundown.pl <- sundown.pl[paste(sundown.pl$NAME, ", ", 
                                sundown.pl$STATE_NAME, sep = "") %in% 
                            c(jus.nc,  
+                             jus.nd, jus.sd, jus.mn, jus.ia,
                              jus.id, jus.mt, jus.ne, jus.wy,
                              jus.nv, jus.ca, jus.wa, jus.or,
                              jus.sc, 
