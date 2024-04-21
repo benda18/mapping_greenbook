@@ -2271,7 +2271,7 @@ Wisconsin Dells
 Wisconsin Rapids
 " %>% read_lines() %>% 
   gsub("\\(.*\\)$", "", .) %>%
-  paste(., ", Wisconsin", sep = "") }
+  paste(., ", Wisconsin", sep = "") 
 jus.mi <- "Algonac
 Allen Park
 Alpena
@@ -2407,12 +2407,78 @@ Whitesboro
 Yaphank
 Yonkers
 " %>% read_lines() %>% paste(., ", New York", sep = "")
-jus.de <- "Rehoboth Beach" %>% read_lines() %>% paste(., ", Delaware", sep = "")
+jus.de <- "Rehoboth Beach
+" %>% read_lines() %>% paste(., ", Delaware", sep = "")}
 
-jus.ct <- NA %>% read_lines() %>% paste(., ", Connecticut", sep = "")
-jus.ri <- NA %>% read_lines() %>% paste(., ", Rhode Island", sep = "")
-jus.ma <- NA %>% read_lines() %>% paste(., ", Massachusetts", sep = "")
-jus.vt <- NA %>% read_lines() %>% paste(., ", Vermont", sep = "")
+jus.ct <- "Beacon Falls
+Bozrah
+Burlington
+Canterbury
+Coventry
+Darien
+East Haven
+Glastonbury
+Greenwich
+Kent
+Lisbon
+Litchfield
+Madison
+Middlefield
+Montville
+Moosup
+Morris
+New Fairfield
+New Hartford
+Old Lyme
+Orange
+Oxford
+Plainfield
+Portland
+Ridgefield
+Seymour
+Sharon
+Simsbury
+Somers
+Southington
+Stafford
+Sterling
+Thomaston
+Thompson
+Unionville
+Westbrook
+Weston
+Westport
+Willington
+" %>% read_lines() %>% paste(., ", Connecticut", sep = "")
+jus.ri <- "Cumberland
+Woonsocket
+" %>% read_lines() %>% paste(., ", Rhode Island", sep = "")
+jus.ma <- "Ashby
+Athol
+Belmont
+Bolton
+Braintree
+Brookline
+Chicopee
+Dedham
+Groton
+Longmeadow
+Manchester
+Marblehead
+Maynard
+Montague
+Quincy
+Saugus
+Swampscott
+" %>% read_lines() %>% paste(., ", Massachusetts", sep = "")
+jus.vt <- "Bellows Falls
+Colchester
+Morrisville
+Poultney
+Swanton
+Tunbridge
+Waterbury
+" %>% read_lines() %>% paste(., ", Vermont", sep = "")
 
 jus.nh <- NA %>% read_lines() %>% paste(., ", New Hampshire", sep = "")
 jus.me <- NA %>% read_lines() %>% paste(., ", Maine", sep = "")
@@ -2432,6 +2498,7 @@ ls(pattern = "jus")
 sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ", 
                  sundown.co$STATE_NAME, sep = "") %in% 
              c(jus.nc, 
+               jus.ct, jus.ri, jus.ma, jus.vt,
                jus.wi, jus.mi, jus.ny,jus.de,
                jus.nd, jus.sd, jus.mn, jus.ia,
                jus.id, jus.mt, jus.ne, jus.wy,
@@ -2455,6 +2522,7 @@ sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ",
 sundown.pl <- sundown.pl[paste(sundown.pl$NAME, ", ", 
                                sundown.pl$STATE_NAME, sep = "") %in% 
                            c(jus.nc,  
+                             jus.ct, jus.ri, jus.ma, jus.vt,
                              jus.wi, jus.mi, jus.ny,jus.de,
                              jus.nd, jus.sd, jus.mn, jus.ia,
                              jus.id, jus.mt, jus.ne, jus.wy,
