@@ -1031,6 +1031,21 @@
       ],
       "Hash": "d908914ae53b04d4c0c0fd72ecc35370"
     },
+    "leaflegend": {
+      "Package": "leaflegend",
+      "Version": "1.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "base64enc",
+        "htmltools",
+        "htmlwidgets",
+        "leaflet",
+        "stats"
+      ],
+      "Hash": "f609c36c3bef4560d888df8a8398b637"
+    },
     "leaflet": {
       "Package": "leaflet",
       "Version": "2.2.2",

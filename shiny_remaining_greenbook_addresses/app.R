@@ -16,8 +16,9 @@ library(qrcode)
 library(jpeg)
 library(ggplot2)
 library(sf)
+library(leaflegend)
 
-renv::snapshot()
+# renv::snapshot()
 
 sb.wid <- 3
 mp.wid <- 12-sb.wid
@@ -189,6 +190,10 @@ server <- function(input, output) {
                 labels = c("Place that once expelled<br>
             entire Black population", 
                            "Possible Sundown Town")) %>%
+      #leaflegend::addLegendSymbol() %>%
+      
+      
+      
       addMarkers(lng = gba$cen_lon,#[gba$decade == input$year_sel.rb,]$cen_lon, 
                  lat = gba$cen_lat,#[gba$decade == input$year_sel.rb,]$cen_lat, 
                  #popup = "popup_foo", 
