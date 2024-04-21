@@ -29,28 +29,17 @@ mp.wid <- 12-sb.wid
 ui <- fluidPage(
   
   # Application title
-  titlePanel("Remaining Green Book Addresses that Geocode in 2024"),
+  titlePanel("Green Book Address Locations"),
   
   # Sidebar 
   sidebarLayout(
     sidebarPanel(width = sb.wid,
-      # shiny::textInput(inputId = "year_sel.ti", 
-      #                     label = "Filter by GreenBook Edition", 
-      #                     value = c(1938, 1947, 1954, 1963)), 
-      # shiny::selectInput(inputId = "year_sel.si", 
-      #                    label = "Filter by GreenBook Edition", 
-      #                    choices = c(1938, 1947, 1954, 1963), 
-      #                    selected = c(1938, 1947, 1954, 1963), 
-      #                    multiple = T), 
-      # shiny::radioButtons(inputId = "year_sel.rb", 
-      #                     label = "Filter by Decade of Publication",
-      #                     choices = c("1930s (dataset in progress)" = "1930s", 
-      #                                 "1940s (dataset in progress)" = "1940s", 
-      #                                 "1950s (dataset in progress)" = "1950s", 
-      #                                 "1960s (dataset in progress)" = "1960s", 
-      #                                 "Unknown / Unattributed" = "unknown"), 
-      #                     selected = "1930s"), 
-      fluidRow(img(src="sometime1947.jpg", 
+      shiny::radioButtons(inputId = "legend.sel", 
+                         label = "Sundown Towns", 
+                         choices = c("Display Possible Sundown Towns" = "yes",
+                                     "Do Not Display Possible Sundown Towns" = "no"), 
+                         selected = "no"),
+     fluidRow(img(src="sometime1947.jpg", 
                    width = "300pt")),
       shiny::plotOutput(outputId = "qr_url", 
                         height = "200px")
@@ -72,29 +61,7 @@ ui <- fluidPage(
 # Define server logic 
 server <- function(input, output) {
   
-  # output$guides <- renderPlot({
-  #   df.mags <- data.frame(guide = c("Chauffeur's Travelers Bureau Inc.", 
-  #                        "Hackley & Harrison's Hotel and Apartment Guide for Colored Travelers",
-  #                        "Division of Negro Affairs: Tentative List of Hotels Operated by Negroes",
-  #                        rep("The Negro Motorist Green Book",21), 
-  #                        "The Negro Handbood", 
-  #                        "Grayson's Travel and Business Guide", 
-  #                        rep("Travelguide", 3), 
-  #                        rep("GO Guide to Pleasant Motoring", 2), 
-  #                        "Nationwide Hotel Association Director and Guide to Travel", 
-  #                        "The Bronze American"), 
-  #              years = c(1933, 1930, 1937, 1939:1941, 
-  #                        1947:1963, 1966, 1942, 1949, 1947, 
-  #                        1949, 1952, 
-  #                        1955, 1957, 1958, 1961)) %>% as_tibble()
-  #   ggplot() +
-  #     geom_histogram(data = df.mags, 
-  #                    aes(x = years, fill = guide))+
-  #     theme(legend.position = "none")
-  #   
-  # })
-  
-  output$leaf_map <- leaflet::renderLeaflet({
+   output$leaf_map <- leaflet::renderLeaflet({
     
     gba <- readRDS(file = "greenbook_addresses.rds")
     expelled.counties <- readRDS(file = "exp_co.rds")
@@ -111,8 +78,12 @@ server <- function(input, output) {
     gba$marker_text <- paste(gba$decade, "//", gba$Type)
     
     
-    leaflet() %>%
+    leaf.out <- leaflet() %>%
       # add different provider tiles
+      addProviderTiles(
+        "CartoDB.Positron",
+        group = "CartoDB.Positron"
+      ) %>%
       addProviderTiles(
         "OpenStreetMap",
         # give the layer a name
@@ -123,65 +94,10 @@ server <- function(input, output) {
         group = "Esri.WorldStreetMap"
       ) %>%
       addProviderTiles(
-        "CartoDB.Positron",
-        group = "CartoDB.Positron"
-      ) %>%
-      addProviderTiles(
         "Esri.WorldImagery",
         group = "Esri.WorldImagery"
       ) %>%
-      # add a layers control
-      addLayersControl(
-        baseGroups = c(
-          "Esri.WorldStreetMap",
-          "CartoDB.Positron",
-          "OpenStreetMap",
-          "Esri.WorldImagery"
-        ),
-        # position it on the topleft
-        position = "topleft"
-      ) %>%
-      addPolygons(data = expelled.counties, 
-                  stroke = T,
-                  fillColor = "blue", 
-                  fillOpacity = 0.2,
-                  opacity = 1,
-                  color = "blue",
-                  weight = 2, 
-                  popup = paste(expelled.counties$NAME, " County, ",
-                                expelled.counties$STATE_NAME, 
-                                sep = "")) %>%
-      addPolygons(data = expelled.places, 
-                  stroke = T,
-                  fillColor = "blue", 
-                  fillOpacity = 0.2,
-                  opacity = 1,
-                  color = "blue",
-                  weight = 2, 
-                  popup = paste(expelled.places$NAME, 
-                                expelled.places$STATE_NAME, 
-                                sep = ", ")) %>%
-      addPolygons(data = sundown.co, 
-                  stroke = T,
-                  fillColor = "brown", 
-                  fillOpacity = 0.1,
-                  opacity = 1,
-                  color = "brown",
-                  weight = 2, 
-                  popup = paste(sundown.co$NAME, " County, ",
-                                sundown.co$STATE_NAME, 
-                                sep = "")) %>%
-      addPolygons(data = sundown.pl, 
-                  stroke = T,
-                  fillColor = "brown", 
-                  fillOpacity = 0.1,
-                  opacity = 1,
-                  color = "brown",
-                  weight = 2, 
-                  popup = paste(sundown.pl$NAME, 
-                                sundown.pl$STATE_NAME, 
-                                sep = ", ")) %>%
-      addLegend(position = "bottomright",
+      addLegend(position = "topleft",
                 title = "Legend",
                 #pal = palc, 
                 #colors = "magma", 
@@ -190,19 +106,81 @@ server <- function(input, output) {
                 labels = c("Place that once expelled<br>
             entire Black population", 
                            "Possible Sundown Town")) %>%
-      #leaflegend::addLegendSymbol() %>%
+      # add a layers control
+      addLayersControl(
+        baseGroups = c(
+          "CartoDB.Positron",
+          "OpenStreetMap",
+          "Esri.WorldStreetMap",
+          "Esri.WorldImagery"
+        ),
+        # position it on the topleft
+        position = "topleft"
+      ) 
+    
+    if("yes" %in% input$legend.sel){
+      leaf.out <- leaf.out %>%
+        addPolygons(data = sundown.co, 
+                    stroke = T,
+                    fillColor = "brown", 
+                    fillOpacity = 0.33,
+                    opacity = 0.33,
+                    color = "brown",
+                    weight = NA, 
+                    popup = paste(sundown.co$NAME, " County, ",
+                                  sundown.co$STATE_NAME, 
+                                  sep = "")) %>%
+        addPolygons(data = sundown.pl, 
+                    stroke = T,
+                    fillColor = "brown", 
+                    fillOpacity = 0.33,
+                    opacity = 0.33,
+                    color = "brown",
+                    weight = NA, 
+                    popup = paste(sundown.pl$NAME, 
+                                  sundown.pl$STATE_NAME, 
+                                  sep = ", "))
+    }
+    
+    if(T){
+      leaf.out <- leaf.out %>%
+        addPolygons(data = expelled.counties, 
+                    stroke = T,
+                    fillColor = "blue", 
+                    fillOpacity = 0.33,
+                    opacity = 0.33,
+                    color = "blue",
+                    weight = NA, 
+                    popup = paste(expelled.counties$NAME, " County, ",
+                                  expelled.counties$STATE_NAME, 
+                                  sep = "")) %>%
+        addPolygons(data = expelled.places, 
+                    stroke = T,
+                    fillColor = "blue", 
+                    fillOpacity = 0.33,
+                    opacity = 0.33,
+                    color = "blue",
+                    weight = NA, 
+                    popup = paste(expelled.places$NAME, 
+                                  expelled.places$STATE_NAME, 
+                                  sep = ", "))
+    }
       
-      # addMarkers(data = gba,
-      #            icon = icons(iconUrl = symbols),
-      #            lat = ~cen_lat, lng = ~cen_lon) %>%
-      # addLegendSize(values = 8,
-      #               pal = numPal,
-      #               title = 'Depth',
-      #               labelStyle = 'margin: auto;',
-      #               shape = c('triangle'),
-      #               #orientation = c('vertical', 'horizontal'),
-      #               opacity = .7,
-      #               breaks = 5) 
+    
+      
+    if(T){
+      leaf.out <- leaf.out %>%
+        # addMarkers(data = gba,
+        #            icon = icons(iconUrl = symbols),
+        #            lat = ~cen_lat, lng = ~cen_lon) %>%
+        # addLegendSize(values = 8,
+        #               pal = numPal,
+        #               title = 'Depth',
+        #               labelStyle = 'margin: auto;',
+        #               shape = c('triangle'),
+        #               #orientation = c('vertical', 'horizontal'),
+        #               opacity = .7,
+        #               breaks = 5) 
       
       
       addMarkers(lng = gba$cen_lon,#[gba$decade == input$year_sel.rb,]$cen_lon,
@@ -232,6 +210,10 @@ server <- function(input, output) {
                                                      color = "black",
                                                      opacity = 0.5),
                      freezeAtZoom = FALSE))
+    }
+      
+      leaf.out
+      
   })
   
   output$qr_url <- renderPlot({
