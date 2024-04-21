@@ -1578,6 +1578,215 @@ Woodson County
 Yates Center
 ") %>% paste(., ", Kansas", sep = "")
 
+jus.co <- read_lines("Brush
+Burlington
+Cedaredge
+Cherry Hill Village
+Colorado Springs
+Craig
+Delta
+Durango
+Evans
+Fruita
+Longmont
+") %>% paste(., ", Colorado", sep = "")
+jus.nm <- read_lines("Aztec
+Bernalillo
+Portales
+Taos
+") %>% paste(., ", New Mexico", sep = "")
+jus.az <- read_lines("Bisbee
+Duncan
+Globe
+Kingman
+Prescott
+Scottsdale
+Sun City
+Tucson
+Youngtown
+") %>% paste(., ", Arizona", sep = "")
+jus.ut <- read_lines("Bingham
+Blanding
+Bluffdale
+Brigham City
+Carbon
+Corinne
+Eagle Mountain
+General
+Murray
+Price
+") %>% paste(., ", Utah", sep = "")
+
+jus.nv <- read_lines("Boulder City
+Ely
+Fallon
+General
+Goldfield
+Minden-Gardnerville
+Unionville
+") %>% paste(., ", Nevada", sep = "")
+jus.ca <- read_lines("
+Anaheim
+Anon
+Antioch
+Arcadia
+Arcata
+Arroyo Grande
+Azusa
+Bakersfield
+Bayshore City
+Bel Air
+Berkeley
+Bishop
+Brea
+Buena Park
+Burbank
+Burlingame
+Cerritos
+Chester
+Chico
+Compton
+Corning
+Costa Mesa
+Crescent City
+Culver City
+Del Norte County
+Dutch Flat
+East Palo Alto
+El Norte
+Escondido
+Eureka
+Fillmore
+Folsom
+Fontana
+Fresno
+Garden Grove
+Glendale
+Gold Run
+Grass Valley
+Hawthorne
+Hemet
+Hidden Hills
+Holy City
+Humboldt County
+Huntington Beach
+Indian Wells
+Inglewood
+Irvine
+Kernville
+Kingsburg
+La Cañada Flintridge
+La Habra
+La Jolla
+Lafayette
+Lincoln
+Lodi
+Lomita
+Lynwood
+Manhattan Beach
+Marysville
+Mill Valley
+Monterey Park
+Napa
+Nevada City
+Newport Beach
+Nicolaus
+Norco
+North Palo Alto
+Oildale
+Orange
+Orange County
+Orinda
+Oroville
+Palmdale
+Palos Verdes Estates
+Parlier
+Pasadena
+Piedmont
+Placerville
+Porterville
+Red Bluff
+Redding
+Redlands
+Redwood City
+Riverside
+Rocklin
+Ross
+San Fernando Valley
+San Jacinto
+San Jose
+San Juan Bautista
+San Juan Capistrano
+San Leandro
+San Marino
+San Pablo
+Santa Ana
+Santa Cruz
+Sawyers Bar
+Selma
+Sheridan
+Sonora
+South Gate
+South Pasadena
+Stanton
+Taft
+Tarzana
+Torrance
+Truckee
+Visalia
+Watsonville
+Westfield
+Westminster
+Wheatland
+Whittier
+Yorba Linda
+") %>% paste(., ", California", sep = "")
+jus.wa <- read_lines("Bellingham
+Brewster
+Chehalis
+Chelan
+Colville
+Kennewick
+Montesano
+Olympia
+Richland
+Seattle
+Shelton
+Tacoma
+Vancouver
+Walla Walla
+") %>% paste(., ", Washington", sep = "")
+jus.or <- read_lines("
+Albany
+Ashland
+Astoria
+Coos Bay
+Dallas
+Eugene
+Florence
+General
+General
+Grants Pass
+Jacksonville
+La Grande
+Lake Oswego
+Lebanon
+McMinnville
+Medford
+Milton
+Monroe
+Oakridge
+Oregon City
+Pendleton
+Roseburg
+Salem
+Springfield
+The Dalles
+Tillamook
+Toledo
+") %>% paste(., ", Oregon", sep = "")
+
+
 sundown.co <- tigris::counties(cb = T) %>%
   mutate(., 
          desc = "Possible Sundown Town")
@@ -1589,6 +1798,7 @@ ls(pattern = "jus")
 sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ", 
                  sundown.co$STATE_NAME, sep = "") %in% 
              c(jus.nc, 
+               jus.nv, jus.ca, jus.wa, jus.or,
                jus.sc, 
                jus.al, 
                jus.fl, 
@@ -1603,10 +1813,12 @@ sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ",
                jus.la,
                jus.oh, 
                jus.wv, jus.va, jus.pa, jus.md,
-               jus.il, jus.mo, jus.ks),]
+               jus.il, jus.mo, jus.ks,
+               jus.co, jus.nm, jus.az, jus.ut),]
 sundown.pl <- sundown.pl[paste(sundown.pl$NAME, ", ", 
                                sundown.pl$STATE_NAME, sep = "") %in% 
-                           c(jus.nc, 
+                           c(jus.nc,  
+                             jus.nv, jus.ca, jus.wa, jus.or,
                              jus.sc, 
                              jus.al, 
                              jus.fl, 
@@ -1621,7 +1833,8 @@ sundown.pl <- sundown.pl[paste(sundown.pl$NAME, ", ",
                              jus.la, 
                              jus.oh, 
                              jus.wv, jus.va, jus.pa, jus.md, 
-                             jus.il, jus.mo, jus.ks),]
+                             jus.il, jus.mo, jus.ks,
+                             jus.co, jus.nm, jus.az, jus.ut),]
 
 
 expelled.places <- tigris::places( cb = T) 
