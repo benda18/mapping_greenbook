@@ -100,7 +100,7 @@ Susquehanna
 Warren
 Waterford
 York County
-")%>% paste(., ", Pennsylvania", sep = "")
+") %>% paste(., ", Pennsylvania", sep = "")
 
 jus.md <- read_lines("Brentwood
 Calvert County
@@ -1929,7 +1929,7 @@ Wheeler County
 Wymore
 Wynot
 York County
-") %>% paste(., ", Nebraska", sep = "")}
+") %>% paste(., ", Nebraska", sep = "")
 
 jus.nd <- "Barnes County
 Emmons County
@@ -2018,9 +2018,260 @@ Villisca
 Vinton
 Waukon
 Winterset
-" %>% read_lines() %>% paste(., ", Iowa", sep = "")
+" %>% read_lines() %>% paste(., ", Iowa", sep = "")}
 
-jus.wi <- NA %>% read_lines() %>% paste(., ", Wisconsin", sep = "")
+jus.wi <- "Abbotsford
+Adams
+Algoma
+Alma
+Altoona
+Amery
+Antigo
+Appleton
+Arcadia
+Ashland
+Augusta
+Baldwin
+Baraboo
+Barron
+Barton
+Bayside
+Beaver Dam
+Berlin
+Black River Falls
+Bloomer
+Boscobel
+Brillion
+Brodhead
+Brookfield
+Brown Deer
+Burlington
+Butler
+Campbellsport
+Cassville
+Cedar Grove
+Cedarburg
+Chetek
+Chilton
+Chippewa Falls
+Clinton
+Clintonville
+Colby
+Columbus
+Combined Locks
+Cornell
+Cottage Grove
+Cottage Grove (town)
+Crandon
+Cross Plains
+Cuba City
+Cudahy
+Cumberland
+Darlington
+De Forest
+De Pere
+Delafield
+Delavan Lake
+Denmark
+Dodgeville
+Durand
+Eagle River
+East Troy
+Eau Claire
+Edgerton
+Elkhorn
+Ellsworth
+Elm Grove
+Elroy
+Evansville
+Fennimore
+Fond du Lac
+Fontana on Geneva Lake
+Fort Atkinson
+Galesville
+Genoa City
+Gillett
+Glendale
+Grafton
+Grand Rapids
+Green Bay
+Greendale
+Greenfield
+Greenwood
+Hales Corners
+Hartford
+Hartland
+Hayward
+Hillsboro
+Horicon
+Hortonville
+Howard
+Hudson
+Hurley
+Janesville
+Jefferson
+Juneau
+Kaukauna
+Kewaskum
+Kewaunee
+Kiel
+Kimberly
+Kohler
+La Crosse
+Ladysmith
+Lake Geneva
+Lake Mills
+Lancaster
+Lannon
+Little Chute
+Lodi
+Loyal
+Manawa
+Manitowoc
+Maple Bluff
+Marathon
+Marinette
+Marion
+Markesan
+Marshfield
+Mauston
+Mayville
+Mazomanie
+McFarland
+Medford
+Mellen
+Menasha
+Menomonee Falls
+Menomonie
+Mequon
+Merrill
+Middleton
+Milton
+Mineral Point
+Mondovi
+Monona
+Monroe
+Montello
+Montreal
+Mosinee
+Mount Horeb
+Mukwonago
+Muskego
+Neenah
+Neillsville
+Nekoosa
+New Berlin
+New Glarus
+New Holstein
+New Lisbon
+New London
+New Richmond
+Niagara
+North Fond du Lac
+North Hudson
+Oconomowoc
+Oconto
+Oconto Falls
+Okauchee Lake
+Omro
+Onalaska
+Oostburg
+Oregon
+Oshkosh
+Osseo
+Owen
+Palmyra (town)
+Palmyra (village)
+Pardeeville
+Park Falls
+Peshtigo
+Pewaukee
+Phillips
+Platteville
+Plymouth
+Port Edwards
+Port Washington
+Portage
+Poynette
+Prairie du Chien
+Prairie du Sac
+Prescott
+Princeton
+Pulaski
+Randolph
+Reedsburg
+Rhinelander
+Rice Lake
+Richland Center
+Ripon
+River Falls
+River Hills
+Rothschild
+Sauk City
+Saukville
+Schofield
+Seymour
+Sharon
+Shawano
+Sheboygan
+Sheboygan Falls
+Shell Lake
+Shorewood
+Shullsburg
+Silver Lake
+Slinger
+South Milwaukee
+Sparta
+Spooner
+Spring Green
+St. Croix Falls
+St. Francis
+Stanley
+Stevens Point
+Stoughton
+Stratford
+Sturgeon Bay
+Sturtevant
+Sun Prairie
+Sussex
+Thiensville
+Thorp
+Tomah
+Tomahawk
+Twin Lakes
+Two Rivers
+Union Grove
+Verona
+Viroqua
+Walworth
+Washburn
+Waterford
+Waterloo
+Watertown
+Waunakee
+Waupaca
+Wausau
+Wautoma
+Wauwatosa
+West Allis
+West Bend
+West Milwaukee
+West Salem
+Westby *
+Weston
+Weyauwega
+Whitefish Bay
+Whitehall
+Whitewater
+Whiting
+Williams Bay
+Wind Lake
+Winneconne
+Wisconsin Dells
+Wisconsin Rapids
+" %>% read_lines() %>% 
+  gsub("\\(.*\\)$", "", .) %>%
+  paste(., ", Wisconsin", sep = "") 
 jus.mi <- NA %>% read_lines() %>% paste(., ", Michigan", sep = "")
 jus.ny <- NA %>% read_lines() %>% paste(., ", New York", sep = "")
 jus.de <- NA %>% read_lines() %>% paste(., ", Delaware", sep = "")
@@ -2048,6 +2299,7 @@ ls(pattern = "jus")
 sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ", 
                  sundown.co$STATE_NAME, sep = "") %in% 
              c(jus.nc, 
+               jus.wi,
                jus.nd, jus.sd, jus.mn, jus.ia,
                jus.id, jus.mt, jus.ne, jus.wy,
                jus.nv, jus.ca, jus.wa, jus.or,
@@ -2070,6 +2322,7 @@ sundown.co <- sundown.co[paste(sundown.co$NAMELSAD, ", ",
 sundown.pl <- sundown.pl[paste(sundown.pl$NAME, ", ", 
                                sundown.pl$STATE_NAME, sep = "") %in% 
                            c(jus.nc,  
+                             jus.wi,
                              jus.nd, jus.sd, jus.mn, jus.ia,
                              jus.id, jus.mt, jus.ne, jus.wy,
                              jus.nv, jus.ca, jus.wa, jus.or,
