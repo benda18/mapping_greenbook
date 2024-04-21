@@ -192,11 +192,22 @@ server <- function(input, output) {
                            "Possible Sundown Town")) %>%
       #leaflegend::addLegendSymbol() %>%
       
+      # addMarkers(data = gba,
+      #            icon = icons(iconUrl = symbols),
+      #            lat = ~cen_lat, lng = ~cen_lon) %>%
+      # addLegendSize(values = 8,
+      #               pal = numPal,
+      #               title = 'Depth',
+      #               labelStyle = 'margin: auto;',
+      #               shape = c('triangle'),
+      #               #orientation = c('vertical', 'horizontal'),
+      #               opacity = .7,
+      #               breaks = 5) 
       
       
-      addMarkers(lng = gba$cen_lon,#[gba$decade == input$year_sel.rb,]$cen_lon, 
-                 lat = gba$cen_lat,#[gba$decade == input$year_sel.rb,]$cen_lat, 
-                 #popup = "popup_foo", 
+      addMarkers(lng = gba$cen_lon,#[gba$decade == input$year_sel.rb,]$cen_lon,
+                 lat = gba$cen_lat,#[gba$decade == input$year_sel.rb,]$cen_lat,
+                 #popup = "popup_foo",
                  label = gba$marker_text,#[gba$decade == input$year_sel.rb,]$Type,
                  labelOptions = labelOptions(
                    interactive = FALSE,
@@ -211,14 +222,14 @@ server <- function(input, output) {
                    style = NULL,
                    sticky = T,
                  ),
-                 clusterOptions = 
+                 clusterOptions =
                    markerClusterOptions(
                      showCoverageOnHover = TRUE,
                      zoomToBoundsOnClick = T,
                      spiderfyOnMaxZoom = T,
                      removeOutsideVisibleBounds = F,
                      spiderLegPolylineOptions = list(weight = 1.5,
-                                                     color = "black", 
+                                                     color = "black",
                                                      opacity = 0.5),
                      freezeAtZoom = FALSE))
   })
