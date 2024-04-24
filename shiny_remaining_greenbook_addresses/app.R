@@ -34,11 +34,11 @@ ui <- fluidPage(
   # Sidebar 
   sidebarLayout(
     sidebarPanel(width = sb.wid,
-      shiny::radioButtons(inputId = "legend.sel", 
-                         label = "Sundown Towns", 
-                         choices = c("Display Possible Sundown Towns" = "yes",
-                                     "Do Not Display Possible Sundown Towns" = "no"), 
-                         selected = "no"),
+      # shiny::radioButtons(inputId = "legend.sel", 
+      #                    label = "Sundown Towns", 
+      #                    choices = c("Display Possible Sundown Towns" = "yes",
+      #                                "Do Not Display Possible Sundown Towns" = "no"), 
+      #                    selected = "no"),
      fluidRow(img(src="sometime1947.jpg", 
                    width = "300pt")),
       shiny::plotOutput(outputId = "qr_url", 
@@ -80,24 +80,24 @@ server <- function(input, output) {
     
     leaf.out <- leaflet() %>%
       # add different provider tiles
-      addProviderTiles(
-        "CartoDB.Positron",
-        group = "CartoDB.Positron"
-      ) %>%
+      # addProviderTiles(
+      #   "CartoDB.Positron",
+      #   group = "CartoDB.Positron"
+      # ) %>%
       addProviderTiles(
         "OpenStreetMap",
         # give the layer a name
         group = "OpenStreetMap"
       ) %>%
-      addProviderTiles(
-        "Esri.WorldStreetMap",
-        group = "Esri.WorldStreetMap"
-      ) %>%
+      # addProviderTiles(
+      #   "Esri.WorldStreetMap",
+      #   group = "Esri.WorldStreetMap"
+      # ) %>%
       addProviderTiles(
         "Esri.WorldImagery",
         group = "Esri.WorldImagery"
       ) %>%
-      addLegend(position = "topleft",
+      addLegend(position = "bottomleft",
                 title = "Legend",
                 #pal = palc, 
                 #colors = "magma", 
@@ -109,18 +109,24 @@ server <- function(input, output) {
       # add a layers control
       addLayersControl(
         baseGroups = c(
-          "CartoDB.Positron",
+          #"CartoDB.Positron",
           "OpenStreetMap",
-          "Esri.WorldStreetMap",
+          #"Esri.WorldStreetMap",
           "Esri.WorldImagery"
         ),
+        overlayGroups = c("Potential Sundown Towns", 
+                          "Place that once expelled<br>
+            entire Black population", 
+                          "Green Book Addresses"),
         # position it on the topleft
-        position = "topleft"
+        position = "bottomleft",
+        options = layersControlOptions(collapsed = F)
       ) 
     
-    if("yes" %in% input$legend.sel){
+    #if("yes" %in% input$legend.sel){
       leaf.out <- leaf.out %>%
         addPolygons(data = sundown.co, 
+                    group = "Potential Sundown Towns",
                     stroke = T,
                     fillColor = "brown", 
                     fillOpacity = 0.33,
@@ -131,6 +137,7 @@ server <- function(input, output) {
                                   sundown.co$STATE_NAME, 
                                   sep = "")) %>%
         addPolygons(data = sundown.pl, 
+                    group = "Potential Sundown Towns",
                     stroke = T,
                     fillColor = "brown", 
                     fillOpacity = 0.33,
@@ -140,11 +147,13 @@ server <- function(input, output) {
                     popup = paste(sundown.pl$NAME, 
                                   sundown.pl$STATE_NAME, 
                                   sep = ", "))
-    }
+    #}
     
-    if(T){
+    #if(T){
       leaf.out <- leaf.out %>%
         addPolygons(data = expelled.counties, 
+                    group = "Place that once expelled<br>
+            entire Black population",
                     stroke = T,
                     fillColor = "blue", 
                     fillOpacity = 0.33,
@@ -155,6 +164,8 @@ server <- function(input, output) {
                                   expelled.counties$STATE_NAME, 
                                   sep = "")) %>%
         addPolygons(data = expelled.places, 
+                    group = "Place that once expelled<br>
+            entire Black population",
                     stroke = T,
                     fillColor = "blue", 
                     fillOpacity = 0.33,
@@ -164,11 +175,11 @@ server <- function(input, output) {
                     popup = paste(expelled.places$NAME, 
                                   expelled.places$STATE_NAME, 
                                   sep = ", "))
-    }
+    #}
       
     
       
-    if(T){
+    #if(T){
       leaf.out <- leaf.out %>%
         # addMarkers(data = gba,
         #            icon = icons(iconUrl = symbols),
@@ -186,6 +197,7 @@ server <- function(input, output) {
       addMarkers(lng = gba$cen_lon,#[gba$decade == input$year_sel.rb,]$cen_lon,
                  lat = gba$cen_lat,#[gba$decade == input$year_sel.rb,]$cen_lat,
                  #popup = "popup_foo",
+                 group = "Green Book Addresses",
                  label = gba$marker_text,#[gba$decade == input$year_sel.rb,]$Type,
                  labelOptions = labelOptions(
                    interactive = FALSE,
@@ -210,7 +222,7 @@ server <- function(input, output) {
                                                      color = "black",
                                                      opacity = 0.5),
                      freezeAtZoom = FALSE))
-    }
+    #}
       
       leaf.out
       
