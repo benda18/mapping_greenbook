@@ -39,7 +39,7 @@ data.race.co <- tidycensus::get_acs(geography = "county",
 
 
 race.pl <- left_join(data.race.pl, 
-                     cw.racevars) %>%
+                     cw.racevars) %>% 
   as.data.table() %>%
   dcast(., 
          geometry+NAME ~ race, value.var = "estimate") %>%

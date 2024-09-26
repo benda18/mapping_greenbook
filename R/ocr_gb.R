@@ -8,7 +8,7 @@ library(xlsx)
 #remotes::install_github("chris-prener/censusxy")
 library(janitor)
 
-#renv::snapshot()
+renv::snapshot()
 
 #https://cran.r-project.org/web/packages/tesseract/index.html
 # https://digitalcollections.nypl.org/items/f62ceaf0-847a-0132-6c49-58d385a7bbd0
