@@ -18,7 +18,8 @@ library(ggplot2)
 library(sf)
 library(leaflegend)
 
-# renv::snapshot()
+ renv::snapshot()
+ renv::status()
 
 sb.wid <- 3
 mp.wid <- 12-sb.wid
