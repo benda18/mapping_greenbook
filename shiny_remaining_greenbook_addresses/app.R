@@ -20,7 +20,8 @@ library(leaflegend)
 
  renv::snapshot()
  renv::status()
-
+ #renv::record("renv@1.0.9")
+ 
 sb.wid <- 3
 mp.wid <- 12-sb.wid
 
