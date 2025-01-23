@@ -13,6 +13,7 @@ https://tim-bender.shinyapps.io/shiny_remaining_greenbook_addresses/
 * https://www.google.com/maps/d/viewer?mid=1oU0Xhrl9RC1e2QRiL56X4wQC0AU&hl=en&ll=35.23372846017531%2C-89.30697509882013&z=5
 * ~~https://www.statesman.com/story/news/2016/10/14/leave-or-die-americas-hidden-history-of-racial-expulsions/9957542007/~~
 * https://web.archive.org/web/20240113034130/https://www.statesman.com/story/news/2016/10/14/leave-or-die-americas-hidden-history-of-racial-expulsions/9957542007/
+* https://justice.tougaloo.edu/map/
 * https://en.wikipedia.org/wiki/Bruce%27s_Beach
 * https://justice.tougaloo.edu/sundown-towns/using-the-sundown-towns-database/state-map/
 * https://thc.texas.gov/learn/historic-resources-survey/african-american-travel-guide-survey-project
